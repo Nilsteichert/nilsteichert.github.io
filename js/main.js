@@ -1,16 +1,14 @@
-//different note formats
-
-//low high in cookies??
-
 var currentNote;
 var lowestOctave, highestOctave;
 setOctaves(2,6);
 var withAccidental = true;
 
+
 WebMidi.enable(function (err) {
 
     if (err) {
       console.log("WebMidi could not be enabled.", err);
+      window.alert("WebMidi is not supported by your Browser.\nPlease use Google Chrome or any other browser with WebMidi support!")
     } else {
       console.log("WebMidi enabled!");
     }
