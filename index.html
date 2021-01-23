@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Homepage</title>
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+      body{
+
+      background-color:rgb(34, 34, 34);
+      margin:0;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      </style>
+
+      
+</head>
+
+<body>
+    <div class="navbar">
+      <a id=selectedDevice>No MIDI-In found</a>
+
+      <div class="dropdown">
+        <button class="dropbtn">Select MIDI-In 
+        </button>
+        <div id="inputDeviceSelector" class="dropdown-content">
+        </div>
+      </div> 
+      <div class="dropdown">
+        <button class="dropbtn">Select Range</button>
+        
+
+      </div>
+    </div>
+    
+  <div id="boxshadow">
+    <div id="noteRenderer">
+      <div id="svgnote">
+      </div>
+    </div>
+  </div>
+  
+  <div id="combos">
+    <div id="combo">
+      <br>
+      Combo: 
+    </div>
+    <div id="counterRight">
+      <br>
+      Right: 
+    </div>
+    <div id=counterWrong>
+      <br>
+      Wrong: 
+    </div>
+  </div>
+
+
+    <script src="js/counter.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/vexflow-min.js"></script>
+    <script src="js/randomnote.js"></script>
+    <script src="js/notedisplayer.js"></script>
+    <script src="js/webmidi.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/pitchtest.js"></script>
+    
+
+
+
+</body>
+</html>
