@@ -5,7 +5,7 @@
 var currentNote;
 var lowestOctave, highestOctave;
 setOctaves(2,6);
-var withAccidental = false;
+var withAccidental = true;
 
 WebMidi.enable(function (err) {
 
@@ -121,4 +121,17 @@ function setOctaves(low,high)
   document.getElementById(String(low)+String(high)).style.cursor="not-allowed"
   document.getElementById(String(low)+String(high)).style.color="rgb(150,150,150)"
   currentNote = generateAndDrawNote(lowestOctave,highestOctave,withAccidental);
+}
+
+function switchAccidentals(){
+  if (withAccidental == true)
+  {
+    withAccidental = false;
+    document.getElementById("accidentalSwitch").innerHTML = "♮";
+  } 
+  else
+  {
+    withAccidental = true;
+    document.getElementById("accidentalSwitch").innerHTML = "♭ ♯";
+  }
 }

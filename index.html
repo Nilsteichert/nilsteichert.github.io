@@ -18,7 +18,7 @@
 
 <body>
     <div class="navbar">
-      <a id=selectedDevice>No MIDI-In found</a>
+      <a id="selectedDevice">No MIDI-In found</a>
 
       <div class="dropdown">
         <button class="dropbtn">Select MIDI-In 
@@ -33,10 +33,9 @@
           <a id="17" onclick="setOctaves(1,7)">C1-C7</a>
           <a id="46" onclick="setOctaves(4,6)">Violin clef</a>
           <a id="24" onclick="setOctaves(2,4)">Bass clef</a>
-
         </div> 
-
       </div>
+      <a style="float: right; cursor: pointer" id="accidentalSwitch" onclick="switchAccidentals()">♭ ♯</a>
     </div>
     
   <div id="boxshadow">

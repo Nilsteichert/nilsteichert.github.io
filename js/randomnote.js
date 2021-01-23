@@ -1,4 +1,3 @@
-
 var notes = ["C/","D/","E/","F/","G/","A/","B/"]
 var accidentals =["#","b"]
 

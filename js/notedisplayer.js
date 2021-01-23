@@ -26,6 +26,7 @@ function generateAndDrawNote(lowestOctave,highestOctave,addAccidental){
 
 function drawNote(note="C/4",accidental=null)
 {
+
 // Create an SVG renderer and attach it to the DIV element named "boo".
 var div = document.getElementById("svgnote")
 div.innerHTML = "";
@@ -44,12 +45,12 @@ var staveBass = new VF.Stave(braceoffset, 110, (div.clientWidth/scalefactor)-bra
 staveTreble.addClef("treble");
 staveBass.addClef("bass");
 
+// Add braces
 let brace = new Vex.Flow.StaveConnector(staveTreble, staveBass).setType(3); 
 let lineRight = new Vex.Flow.StaveConnector(staveTreble, staveBass).setType(0);
 let lineLeft = new Vex.Flow.StaveConnector(staveTreble, staveBass).setType(1);
 
 var generatedClef ="treble";
-
 octave = parseInt(note.slice(-1));
 if (octave <4 ) {generatedClef="bass"}
 
@@ -81,10 +82,7 @@ lineRight.setContext(context).draw();
 
 // Render voice
 
-if (generatedClef == "treble") {
-voice.draw(context,staveTreble);
-}
-else{
-  voice.draw(context,staveBass);
-}
+if (generatedClef == "treble") {voice.draw(context,staveTreble);}
+else{voice.draw(context,staveBass);}
+
 }
