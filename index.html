@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset='utf-8'>
-    <title>Homepage</title>
+    <title>Notetrainer</title>
     <link href="css/style.css" rel="stylesheet">
     <style>
       body{
@@ -28,7 +28,13 @@
       </div> 
       <div class="dropdown">
         <button class="dropbtn">Select Range</button>
-        
+        <div id="rangeSelector" class="dropdown-content">
+          <a id="26" onclick="setOctaves(2,6)">C2-C6</a>
+          <a id="17" onclick="setOctaves(1,7)">C1-C7</a>
+          <a id="46" onclick="setOctaves(4,6)">Violin clef</a>
+          <a id="24" onclick="setOctaves(2,4)">Bass clef</a>
+
+        </div> 
 
       </div>
     </div>

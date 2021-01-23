@@ -1,4 +1,11 @@
+//different note formats
+
+//low high in cookies??
+
 var currentNote;
+var lowestOctave, highestOctave;
+setOctaves(2,6);
+var withAccidental = false;
 
 WebMidi.enable(function (err) {
 
@@ -22,9 +29,7 @@ WebMidi.enable(function (err) {
     try {selectInputDevice(0);} 
     catch (error) {}
     
-    currentNote = generateAndDrawNote();
-
-
+    currentNote = generateAndDrawNote(lowestOctave,highestOctave,withAccidental);
   });
 
 
@@ -34,7 +39,7 @@ function selectInputDevice(i){
   document.getElementById(element.name).style="color: rgb(0,0,0)"    
   document.getElementById(element.name).style.cursor = "pointer"
   });
-  document.getElementById("selectedDevice").innerHTML="Aktuelles Gerät: " + WebMidi.inputs[i].name;
+  document.getElementById("selectedDevice").innerHTML="Current device: " + WebMidi.inputs[i].name;
   document.getElementById(WebMidi.inputs[i].name).style="color: rgb(150,150,150)"
   document.getElementById(WebMidi.inputs[i].name).style.cursor = "not-allowed"
   console.log(i)
@@ -54,7 +59,7 @@ function startListening(i) {
 
       if (checkNote(receivedNote)) {
         console.log("RICHTIG");
-        currentNote = generateAndDrawNote(); 
+        currentNote = generateAndDrawNote(lowestOctave,highestOctave,withAccidental); 
         answeredRight();  
         increaseCombo();
         increaseRight();
@@ -105,4 +110,15 @@ function checkNote(note){
 }
 
 
-
+function setOctaves(low,high)
+{
+  document.getElementById("26").style="color: rgb(0,0,0), cursor=pointer"
+  document.getElementById("17").style="color: rgb(0,0,0), cursor=pointer"
+  document.getElementById("24").style="color: rgb(0,0,0), cursor=pointer"
+  document.getElementById("46").style="color: rgb(0,0,0), cursor=pointer"
+  lowestOctave = low;
+  highestOctave = high;
+  document.getElementById(String(low)+String(high)).style.cursor="not-allowed"
+  document.getElementById(String(low)+String(high)).style.color="rgb(150,150,150)"
+  currentNote = generateAndDrawNote(lowestOctave,highestOctave,withAccidental);
+}

@@ -2,21 +2,24 @@ VF = Vex.Flow;
 
 const scalefactor = 2;
 const braceoffset = 20;
-var addAccidental = true;
 
 
 
-function generateAndDrawNote(){
-  generatedNote = generateRandomNote();
+function generateAndDrawNote(lowestOctave,highestOctave,addAccidental){
+  generatedNote = generateRandomNote(lowestOctave,highestOctave);
+
 
   if (addAccidental == true) {accidental = generateAccidental()}
   else{accidental = null}
   
   drawNote(generatedNote,accidental)
-  var position = 1;
+  
   if(addAccidental == true){
-  var noteWithAccidental = [generatedNote.slice(0, position), accidental, generatedNote.slice(position)].join('');
+  var noteWithAccidental = [generatedNote.slice(0, 1), accidental, generatedNote.slice(1)].join('');
   }
+  else {return generatedNote};
+  console.log("generatAndDrawNote" + noteWithAccidental)
+
   return noteWithAccidental;
 
 }

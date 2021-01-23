@@ -7,6 +7,7 @@ function generateRandomNote(lowestOctave = 2, highestOctave = 6, ) {
     var note = notes[Math.floor(Math.random() * notes.length)];
     note+=getRandomInt(lowestOctave,highestOctave)
     return note;
+   
 }
 
 function generateAccidental()

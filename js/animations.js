@@ -1,6 +1,5 @@
 async function answeredRight()
 {
-    console.log("In AR ")
     var opacity = 0;
     while (opacity < 1) {
 
@@ -21,7 +20,6 @@ async function answeredRight()
 
 async function answeredWrong()
    {
-       console.log("In AW")
        var opacity = 0;
        while (opacity < 1) {
    
