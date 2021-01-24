@@ -1,4 +1,4 @@
-keysigs = [ 
+keysignatures = [ 
         "C",
         "F",
         "Bb",
@@ -30,7 +30,52 @@ keysigs = [
         "D#m",
         "A#m"
 ]
+majorkeysignatures = [
+    "C",
+    "F",
+    "Bb",
+    "Eb",
+    "Ab",
+    "Db",
+    "Gb",
+    "Cb",
+    "G",
+    "D",
+    "A",
+    "E",
+    "B",
+    "F#",
+    "C#",
+]
+minorkeysignatures = [
+    "Am",
+    "Dm",
+    "Gm",
+    "Cm",
+    "Fm",
+    "Bbm",
+    "Ebm",
+    "Abm",
+    "Em",
+    "Bm",
+    "F#m",
+    "C#m",
+    "G#m",
+    "D#m",
+    "A#m"
+]
 
+function generateRandomKeySignature(range = null){
+    switch (range) {
+        case "minor":
+            return minorkeysignatures[Math.floor(Math.random() * minorkeysignatures.length)];
+        case "major":
+            return majorkeysignatures[Math.floor(Math.random() * majorkeysignatures.length)];
+        default:
+            return keysignatures[Math.floor(Math.random() * keysignatures.length)];
+    }
+    
+}
 
 //Takes key signature and note in following formatting: ("C#m","Cb/4") or ("F", "G/4")
 function checkKeychangeKeySignature(keySignature,note)
@@ -62,25 +107,28 @@ function checkKeychangeKeySignature(keySignature,note)
     var currentKeySignatureDict = getKeySignatureDict(keySignature);
     
     subIndex = "dict_"+keySignature.replace("#","sharp")
-    console.log(currentKeySignatureDict)
-    console.log(currentKeySignatureDict[subIndex])
-    console.log(note.slice(0,1))
     
     if(note.slice(0,1) in currentKeySignatureDict[subIndex]){ 
         //Check if octave changed with applied key signature
+        console.log(note +" <-- before octavechange in keysig")
+
         if (keySignature == "Gb" || keySignature == "Cb"){
             if (note.slice(0,1)== "C"){
-            note = note.replace(note.slice(-1),note.slice(-1)-1)
+            newOctave = parseInt(note.slice(-1))-1;
+            note = note.replace(note.slice(-1),newOctave)
             }
         }
         if (keySignature == "C#"){
             if (note.slice(0,1)== "B"){
-            note = note.replace(note.slice(-1),note.slice(-1)+1)
+            newOctave = parseInt(note.slice(-1))+1;
+            note = note.replace(note.slice(-1),newOctave)
             }
         }
+        console.log(note +" <-- after octavechange in keysig")
 
         //Replace note with changed note
         note = note.replace(note.slice(0,1),currentKeySignatureDict[subIndex][note.slice(0,1)]);
+        console.log(note +" <-- after notechange in keysig")
         return note;
     }
     else {return note;}

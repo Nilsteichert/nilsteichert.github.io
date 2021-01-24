@@ -18,8 +18,6 @@ function generateAndDrawNote(lowestOctave,highestOctave,addAccidental){
   var noteWithAccidental = [generatedNote.slice(0, 1), accidental, generatedNote.slice(1)].join('');
   }
   else {return generatedNote};
-  console.log("generatAndDrawNote" + noteWithAccidental)
-
   return noteWithAccidental;
 
 }
@@ -44,8 +42,8 @@ var staveBass = new VF.Stave(braceoffset, 110, (div.clientWidth/scalefactor)-bra
 // Add a clef
 staveTreble.addClef("treble");
 staveBass.addClef("bass");
-staveTreble.addKeySignature("D")
-staveBass.addKeySignature("D")
+staveTreble.addKeySignature(getCurrentKeySignature())
+staveBass.addKeySignature(getCurrentKeySignature())
 
 // Add braces
 let brace = new Vex.Flow.StaveConnector(staveTreble, staveBass).setType(3); 

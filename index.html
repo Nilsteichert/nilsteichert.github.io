@@ -35,6 +35,15 @@
           <a id="17" onclick="setOctaves(1,7)">Whole keyboard</a>
         </div> 
       </div>
+      <div class="dropdown">
+        <button class="dropbtn">Select key signature</button>
+        <div id="rangeSelector" class="dropdown-content">
+          <a id="random" onclick="setKeySignature()">Random</a>
+          <a id="random" onclick="setKeySignature('major')">Major</a>
+          <a id="random" onclick="setKeySignature('C#m')">C#m</a>
+          <a id="random" onclick="setKeySignature('C#')">C#</a>
+        </div> 
+      </div>
       <a style="float: right; cursor: pointer" id="accidentalSwitch" onclick="switchAccidentals()">♭ ♯</a>
     </div>
     
