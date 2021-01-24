@@ -114,6 +114,9 @@ function checkNote(note){
 
 }
 
+//TEST ALL NOTES AND KEY SIGS
+
+//Test Cb Fb
 
 function setOctaves(low,high,init=false)
 {
@@ -165,6 +168,7 @@ function setKeySignature(selectedKeySignature = "random",init=false)
   if (init == false){
   currentNote = generateAndDrawNote(lowestOctave,highestOctave,withAccidental);
   }
+  
   //document.getElementById("26").style="color: rgb(0,0,0), cursor=pointer"
   //document.getElementById(String(low)+String(high)).style.cursor="not-allowed"
   //document.getElementById(String(low)+String(high)).style.color="rgb(150,150,150)"
