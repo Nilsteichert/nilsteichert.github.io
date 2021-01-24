@@ -11,7 +11,6 @@ function generateRandomNote(lowestOctave = 2, highestOctave = 6, ) {
 
 function generateAccidental()
 {
-    if (Math.round(Math.random()) == 0) {return null;}
     var accidental = accidentals[Math.round(Math.random())]   
     return accidental;  
 }

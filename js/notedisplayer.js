@@ -5,9 +5,12 @@ const braceoffset = 20;
 
 
 
-function generateAndDrawNote(lowestOctave,highestOctave,addAccidental){
+function generateAndDrawNote(lowestOctave,highestOctave,addAccidental,preselectedNote)
+{
+  if (preselectedNote != null) {generatedNote = preselectedNote}
+  else{
   generatedNote = generateRandomNote(lowestOctave,highestOctave);
-
+  }
 
   if (addAccidental == true) {accidental = generateAccidental()}
   else{accidental = null}
@@ -84,5 +87,11 @@ lineRight.setContext(context).draw();
 
 if (generatedClef == "treble") {voice.draw(context,staveTreble);}
 else{voice.draw(context,staveBass);}
+}
 
+function removeAccidental(note)
+{
+  if (note.includes("#") || note.includes("b")){
+  return note.slice(0,-3)+note.slice(-2);
+  }
 }

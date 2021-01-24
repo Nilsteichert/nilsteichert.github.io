@@ -138,12 +138,14 @@ function switchAccidentals(){
   {
     withAccidental = false;
     document.getElementById("accidentalSwitch").innerHTML = "♮";
+    currentNote = removeAccidental(currentNote);
   } 
   else
   {
     withAccidental = true;
     document.getElementById("accidentalSwitch").innerHTML = "♭ ♯";
   }
+  currentNote = generateAndDrawNote(lowestOctave,highestOctave,withAccidental,currentNote);
 }
 
 function setKeySignature(selectedKeySignature = "random",init=false)
