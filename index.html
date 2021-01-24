@@ -27,12 +27,12 @@
         </div>
       </div> 
       <div class="dropdown">
-        <button class="dropbtn">Select Range</button>
+        <button class="dropbtn">Select range</button>
         <div id="rangeSelector" class="dropdown-content">
-          <a id="26" onclick="setOctaves(2,6)">C2-C6</a>
-          <a id="17" onclick="setOctaves(1,7)">C1-C7</a>
+          <a id="26" onclick="setOctaves(2,6)">Bass and violin</a>
           <a id="46" onclick="setOctaves(4,6)">Violin clef</a>
           <a id="24" onclick="setOctaves(2,4)">Bass clef</a>
+          <a id="17" onclick="setOctaves(1,7)">Whole keyboard</a>
         </div> 
       </div>
       <a style="float: right; cursor: pointer" id="accidentalSwitch" onclick="switchAccidentals()">♭ ♯</a>
@@ -48,19 +48,17 @@
   <div id="combos">
     <div id="combo">
       <br>
-      Combo: 
+      Combo: 0
     </div>
     <div id="counterRight">
       <br>
-      Right: 
+      Right: 0
     </div>
     <div id=counterWrong>
       <br>
-      Wrong: 
+      Wrong: 0
     </div>
   </div>
-
-
     <script src="js/counter.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/vexflow-min.js"></script>
@@ -69,9 +67,5 @@
     <script src="js/webmidi.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/pitchtest.js"></script>
-    
-
-
-
 </body>
 </html>
