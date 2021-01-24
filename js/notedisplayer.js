@@ -44,6 +44,8 @@ var staveBass = new VF.Stave(braceoffset, 110, (div.clientWidth/scalefactor)-bra
 // Add a clef
 staveTreble.addClef("treble");
 staveBass.addClef("bass");
+staveTreble.addKeySignature("D")
+staveBass.addKeySignature("D")
 
 // Add braces
 let brace = new Vex.Flow.StaveConnector(staveTreble, staveBass).setType(3); 
