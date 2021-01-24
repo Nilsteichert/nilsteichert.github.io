@@ -1,6 +1,7 @@
 var currentNote, lowestOctave, highestOctave;
 var keysignature = "C";
 setOctaves(2,6,true);
+setKeySignature("C",true)
 var withAccidental = true;
 
 
@@ -56,7 +57,7 @@ function startListening(i) {
       console.log("Current Note" + currentNote)
 
       if (checkNote(receivedNote)) {
-        console.log("RICHTIG");
+        console.log("right, generating new note");
         currentNote = generateAndDrawNote(lowestOctave,highestOctave,withAccidental); 
         answeredRight();  
         increaseCombo();
@@ -64,7 +65,7 @@ function startListening(i) {
       }
 
       else {
-      console.log("FALSCH")
+      console.log("wrong")
       answeredWrong();
       resetCombo();
       increaseWrong();
@@ -150,19 +151,24 @@ function switchAccidentals(){
 
 function setKeySignature(selectedKeySignature = "random",init=false)
 {
+  setKeySignatureDesignToDefault()
   switch (selectedKeySignature) {
     case "random":
       keysignature = generateRandomKeySignature();
-      console.log(keysignature);
+      setCurrentKeySignatureToSelected();
       break;
     case "minor":
       keysignature = generateRandomKeySignature("minor");
+      setCurrentKeySignatureToSelected();
       break;
     case "major":
       keysignature = generateRandomKeySignature("major");
+      setCurrentKeySignatureToSelected();
       break;
     default:
       keysignature = selectedKeySignature;
+      console.log(keysignature);
+      setCurrentKeySignatureToSelected()
       break;
   
   }
@@ -170,13 +176,49 @@ function setKeySignature(selectedKeySignature = "random",init=false)
   if (init == false){
   currentNote = generateAndDrawNote(lowestOctave,highestOctave,withAccidental);
   }
-  
-  //document.getElementById("26").style="color: rgb(0,0,0), cursor=pointer"
-  //document.getElementById(String(low)+String(high)).style.cursor="not-allowed"
-  //document.getElementById(String(low)+String(high)).style.color="rgb(150,150,150)"
-  
 }
 
-//noten prüfen
-
 function getCurrentKeySignature() {return keysignature}
+
+function setCurrentKeySignatureToSelected(){
+  document.getElementById(keysignature).style.color="rgb(150,150,150)";
+  document.getElementById(keysignature).style.cursor="not-allowed";
+}
+
+function setKeySignatureDesignToDefault() {
+  document.getElementById("C").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("F").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("Bb").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("Eb").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("Ab").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("Db").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("Gb").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("Cb").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("G").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("D").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("A").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("E").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("B").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("F#").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("C#").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("Am").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("Dm").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("Gm").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("Cm").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("Fm").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("Bbm").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("Ebm").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("Abm").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("Em").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("Bm").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("F#m").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("C#m").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("G#m").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("D#m").style="color: rgb(0,0,0), cursor=pointer";
+  document.getElementById("A#m").style="color: rgb(0,0,0), cursor=pointer";
+}
+
+function setCurrentNote(setNoteTo)
+{
+  currentNote = setNoteTo;
+}

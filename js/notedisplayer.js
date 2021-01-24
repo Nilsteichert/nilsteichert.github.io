@@ -14,8 +14,8 @@ function generateAndDrawNote(lowestOctave,highestOctave,addAccidental,preselecte
 
   if (addAccidental == true) {accidental = generateAccidental()}
   else{accidental = null}
-  
-  drawNote(generatedNote,accidental)
+
+  drawNote(generatedNote,accidental);
   
   if(addAccidental == true){
   var noteWithAccidental = [generatedNote.slice(0, 1), accidental, generatedNote.slice(1)].join('');

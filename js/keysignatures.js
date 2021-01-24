@@ -110,8 +110,6 @@ function checkKeychangeKeySignature(keySignature,note)
     
     if(note.slice(0,1) in currentKeySignatureDict[subIndex]){ 
         //Check if octave changed with applied key signature
-        console.log(note +" <-- before octavechange in keysig")
-
         if (keySignature == "Gb" || keySignature == "Cb"){
             if (note.slice(0,1)== "C"){
             newOctave = parseInt(note.slice(-1))-1;
@@ -124,11 +122,9 @@ function checkKeychangeKeySignature(keySignature,note)
             note = note.replace(note.slice(-1),newOctave)
             }
         }
-        console.log(note +" <-- after octavechange in keysig")
-
+        
         //Replace note with changed note
         note = note.replace(note.slice(0,1),currentKeySignatureDict[subIndex][note.slice(0,1)]);
-        console.log(note +" <-- after notechange in keysig")
         return note;
     }
     else {return note;}

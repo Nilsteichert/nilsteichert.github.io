@@ -37,7 +37,7 @@
       </div>
       <div class="dropdown">
         <button class="dropbtn">Major keys</button>
-        <div id="keySelector" class="dropdown-content">
+        <div id="keySelectorMajor" class="dropdown-content">
           <a id ="randommajor" onclick="setKeySignature('major')">Random</a>
           <a id ="C" onclick="setKeySignature('C')">C-Major</a>
           <a id ="G" onclick="setKeySignature('G')">G-Major</a>
@@ -58,15 +58,8 @@
       </div>
       <div class="dropdown">
         <button class="dropbtn">Minor keys</button>
-        <div id="keySelector" class="dropdown-content">
+        <div id="keySelectorMinor" class="dropdown-content">
           <a id ="randomminor" onclick="setKeySignature('minor')">Random</a>
-          <a id ="Em" onclick="setKeySignature('Em')">E-Minor</a>
-          <a id ="Bm" onclick="setKeySignature('Bm')">B-Minor</a>
-          <a id ="F#m" onclick="setKeySignature('F#m')">F♯-Minor</a>
-          <a id ="C#m" onclick="setKeySignature('C#m')">C♯-Minor</a>
-          <a id ="G#m" onclick="setKeySignature('G#m')">G♯-Minor</a>
-          <a id ="D#m" onclick="setKeySignature('D#m')">D♯-Minor</a>
-          <a id ="A#m" onclick="setKeySignature('A#m')">A♯-Minor</a>
           <a id ="Am" onclick="setKeySignature('Am')">A-Minor</a>
           <a id ="Dm" onclick="setKeySignature('Dm')">D-Minor</a>
           <a id ="Gm" onclick="setKeySignature('Gm')">G-Minor</a>
@@ -75,7 +68,14 @@
           <a id ="Bbm" onclick="setKeySignature('Bbm')">B♭-Minor</a>
           <a id ="Ebm" onclick="setKeySignature('Ebm')">E♭-Minor</a>
           <a id ="Abm" onclick="setKeySignature('Abm')">A♭-Minor</a>          
-        </div>
+          <a id ="Em" onclick="setKeySignature('Em')">E-Minor</a>
+          <a id ="Bm" onclick="setKeySignature('Bm')">B-Minor</a>
+          <a id ="F#m" onclick="setKeySignature('F#m')">F♯-Minor</a>
+          <a id ="C#m" onclick="setKeySignature('C#m')">C♯-Minor</a>
+          <a id ="G#m" onclick="setKeySignature('G#m')">G♯-Minor</a>
+          <a id ="D#m" onclick="setKeySignature('D#m')">D♯-Minor</a>
+          <a id ="A#m" onclick="setKeySignature('A#m')">A♯-Minor</a>
+          </div>
       </div>
       <a style="float: right; cursor: pointer" id="accidentalSwitch" onclick="switchAccidentals()">♭ ♯</a>
     </div>
