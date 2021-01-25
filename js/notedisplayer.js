@@ -5,27 +5,8 @@ const braceoffset = 20;
 
 
 
-function generateAndDrawNote(lowestOctave,highestOctave,addAccidental,preselectedNote)
-{
-  if (preselectedNote != null) {generatedNote = preselectedNote}
-  else{
-  generatedNote = generateRandomNote(lowestOctave,highestOctave);
-  }
 
-  if (addAccidental == true) {accidental = generateAccidental()}
-  else{accidental = null}
-
-  drawNote(generatedNote,accidental);
-  
-  if(addAccidental == true){
-  var noteWithAccidental = [generatedNote.slice(0, 1), accidental, generatedNote.slice(1)].join('');
-  }
-  else {return generatedNote};
-  return noteWithAccidental;
-
-}
-
-function drawNote(note="C/4",accidental=null)
+function drawNote(note = getCurrentNote())
 {
 
 // Create an SVG renderer and attach it to the DIV element named "boo".
@@ -64,7 +45,7 @@ var notes = [
 
 try 
 {
-    notes[0].addAccidental(0, new VF.Accidental(accidental))
+    notes[0].addAccidental(0, new VF.Accidental(getAccidental(note)))
 }
 catch(error){}
 
@@ -94,4 +75,13 @@ function removeAccidental(note)
   if (note.includes("#") || note.includes("b")){
   return note.slice(0,-3)+note.slice(-2);
   }
+  else {return note}
+}
+
+function getAccidental(note)
+{
+  if (note.includes("#") || note.includes("b")){
+  return note.slice(1,2);
+  }
+  else {return null}
 }

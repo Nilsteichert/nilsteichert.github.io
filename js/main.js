@@ -1,12 +1,17 @@
-var currentNote, lowestOctave, highestOctave;
+//Global Variables
+var firstNote, lowestOctave, highestOctave;
 var keysignature = "C";
+var withAccidental = true;
+
+//Initialize Settings
 setOctaves(2,6,true);
 setKeySignature("C",true)
-var withAccidental = true;
+setCurrentNote(generateRandomNote());
 
 
 WebMidi.enable(function (err) {
 
+    //Enable WebMidi
     if (err) {
       console.log("WebMidi could not be enabled.", err);
       window.alert("WebMidi is not supported by your Browser.\nPlease use Google Chrome or any other browser with WebMidi support!")
@@ -14,6 +19,7 @@ WebMidi.enable(function (err) {
       console.log("WebMidi enabled!");
     }
     
+    //Populate MidiDeviceList
     var select = document.getElementById( 'inputDeviceSelector' );
     for( i in WebMidi.inputs ) {
     
@@ -25,10 +31,12 @@ WebMidi.enable(function (err) {
       select.appendChild(div);  
     };
 
+    //Select first found MidiDevice
     try {selectInputDevice(0);} 
     catch (error) {}
     
-    currentNote = generateAndDrawNote(lowestOctave,highestOctave,withAccidental);
+    //draw first notes
+    drawNote(getCurrentNote());
   });
 
 
@@ -54,16 +62,16 @@ function startListening(i) {
     function (e) {
       receivedNote = e.note.name + "/" + e.note.octave;
       console.log("Received 'noteon' message (" + receivedNote + ").");
-      console.log("Current Note" + currentNote)
+      console.log("Current Note" + getCurrentNote())
 
       if (checkNote(receivedNote)) {
         console.log("right, generating new note");
-        currentNote = generateAndDrawNote(lowestOctave,highestOctave,withAccidental); 
+        setCurrentNote(generateRandomNote());
+        drawNote(getCurrentNote());
         answeredRight();  
         increaseCombo();
         increaseRight();
       }
-
       else {
       console.log("wrong")
       answeredWrong();
@@ -80,8 +88,9 @@ function removeListeners() {
 }
 
 function checkNote(note){
-  currentNoteBeforeChange = currentNote;
-
+  currentNoteBeforeChange = getCurrentNote();
+  currentNote = getCurrentNote();
+  
   //Change octave at b# and cb
   if (currentNote.includes("B#") == true){
     currentNote = currentNote.replace("B#","C");
@@ -107,18 +116,17 @@ function checkNote(note){
   currentNote = currentNote.replace("Ab","G#");
   currentNote = currentNote.replace("Bb","A#");
 
-
+  //Check if MidiInput matches shown Note
   if (note == currentNote) {return true;}
-  else {
-    currentNote = currentNoteBeforeChange;
-    return false;}
-
+  else {return false;}
 }
 
 //TEST ALL NOTES AND KEY SIGS
 
-//Test Cb Fb
+//Set and Get
 
+
+//currentnote ändern
 function setOctaves(low,high,init=false)
 {
   document.getElementById("26").style="color: rgb(0,0,0), cursor=pointer"
@@ -130,7 +138,8 @@ function setOctaves(low,high,init=false)
   document.getElementById(String(low)+String(high)).style.cursor="not-allowed"
   document.getElementById(String(low)+String(high)).style.color="rgb(150,150,150)"
   if (init == false){ 
-  currentNote = generateAndDrawNote(lowestOctave,highestOctave,withAccidental);
+  setCurrentNote(generateRandomNote());
+  drawNote(getCurrentNote());
   }
 }
 
@@ -139,14 +148,17 @@ function switchAccidentals(){
   {
     withAccidental = false;
     document.getElementById("accidentalSwitch").innerHTML = "♮";
-    currentNote = removeAccidental(currentNote);
+    setCurrentNote(removeAccidental(getCurrentNote()));
+    console.log(getCurrentNote());
   } 
   else
   {
     withAccidental = true;
     document.getElementById("accidentalSwitch").innerHTML = "♭ ♯";
+    setCurrentNote(addAccidentalToNote(getCurrentNote()));
+    console.log(getCurrentNote());
   }
-  currentNote = generateAndDrawNote(lowestOctave,highestOctave,withAccidental,currentNote);
+  drawNote(getCurrentNote());
 }
 
 function setKeySignature(selectedKeySignature = "random",init=false)
@@ -174,7 +186,8 @@ function setKeySignature(selectedKeySignature = "random",init=false)
   }
   console.log("Selected key:" + keysignature)
   if (init == false){
-  currentNote = generateAndDrawNote(lowestOctave,highestOctave,withAccidental);
+  setCurrentNote(generateRandomNote());
+  drawNote(getCurrentNote());
   }
 }
 
@@ -218,7 +231,12 @@ function setKeySignatureDesignToDefault() {
   document.getElementById("A#m").style="color: rgb(0,0,0), cursor=pointer";
 }
 
-function setCurrentNote(setNoteTo)
-{
-  currentNote = setNoteTo;
-}
+function setCurrentNote(setNoteTo){firstNote = setNoteTo;}
+
+function getCurrentNote(){return firstNote;}
+
+function getAccidentalSwitch(){return withAccidental;}
+
+function getLowestOctave(){return lowestOctave;}
+
+function getHighestOctave() {return highestOctave;}

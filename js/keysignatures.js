@@ -74,7 +74,6 @@ function generateRandomKeySignature(range = null){
         default:
             return keysignatures[Math.floor(Math.random() * keysignatures.length)];
     }
-    
 }
 
 //Takes key signature and note in following formatting: ("C#m","Cb/4") or ("F", "G/4")
@@ -101,8 +100,6 @@ function checkKeychangeKeySignature(keySignature,note)
         keySignature = keySignature.replace("D#m","F#")
         keySignature = keySignature.replace( "A#m","C#") 
     }
-
-
     //Get dictornary with all accidentals per key signature
     var currentKeySignatureDict = getKeySignatureDict(keySignature);
     
@@ -129,8 +126,6 @@ function checkKeychangeKeySignature(keySignature,note)
     }
     else {return note;}
 }
-
-
 
 function getKeySignatureDict(keySignature)
 {
