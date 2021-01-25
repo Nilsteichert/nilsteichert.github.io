@@ -102,7 +102,7 @@
       margin-right: auto;
       margin-top: 40px;
       align-content:center;
-      width: 440px;
+      width: 670px;
       height: 80px; 
       border-radius: 15px;
       overflow: hidden; 
@@ -113,7 +113,7 @@
       display: table-cell;
       width: 33.33vw;
       padding-left: 5%;
-      color:rgb(5, 155, 255);
+      color:rgb(255, 255, 255);
       font-size: 130%;
     }
   
@@ -121,7 +121,7 @@
       display: table-cell;
       width: 33.33vw;
       padding-left: 5%;
-      color:rgb(161, 255, 149);
+      color:rgb(255, 255, 255);
       font-size: 130%;
     }
 
@@ -129,6 +129,6 @@
       display: table-cell;
       width: 33.33vw;
       padding-left: 5%;
-      color:rgb(255, 111, 111);
+      color:rgb(255, 255, 255);
       font-size: 130%;
     }

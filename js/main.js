@@ -1,7 +1,7 @@
 //Global Variables
 var firstNote,secondNote, lowestOctave, highestOctave;
 var keysignature = "C";
-var withAccidental = true;
+var withAccidental = false;
 
 //Initialize Settings
 setOctaves(2,6,true);
