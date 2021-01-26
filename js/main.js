@@ -10,6 +10,10 @@ setCurrentNote(generateRandomNote());
 setSecondNote(generateRandomNote());
 
 
+function Test(){
+
+}
+
 
 WebMidi.enable(function (err) {
 
