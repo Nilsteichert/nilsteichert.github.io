@@ -10,11 +10,6 @@ setCurrentNote(generateRandomNote());
 setSecondNote(generateRandomNote());
 
 
-function Test(){
-
-}
-
-
 WebMidi.enable(function (err) {
 
     //Enable WebMidi
@@ -25,7 +20,7 @@ WebMidi.enable(function (err) {
       console.log("WebMidi enabled!");
     }
     
-    //Populate MidiDeviceList
+    //Populate DeviceList
     var select = document.getElementById( 'inputDeviceSelector' );
     for( i in WebMidi.inputs ) {
     
@@ -34,12 +29,22 @@ WebMidi.enable(function (err) {
       div.style.cursor = "pointer";
       div.id = WebMidi.inputs[i].name;
       div.onclick=(function(val) { return function(){ selectInputDevice(val); }})(i);
-      select.appendChild(div);  
+      select.appendChild(div);
+
+      
+      var microphone = document.createElement("a");
+      microphone.innerHTML= "Microphone";
+      microphone.id = "microphone";
+      microphone.style = "pointer";
+      microphone.onclick=function(){microphoneInput()};
+      select.appendChild(microphone);
     };
 
     //Select first found MidiDevice
     try {selectInputDevice(0);} 
-    catch (error) {}
+    catch (error) {
+      //ASK IF YOU SHOULD SELECT MICROPHONE beatufil popupshit
+    }
     
     //draw first notes
     drawNote(getCurrentNote(),getSecondNote());
@@ -267,4 +272,8 @@ function nextNote()
   setSecondNote(generateRandomNote());
   console.log(getCurrentNote(),getSecondNote())
   drawNote(getCurrentNote(),getSecondNote());
+}
+
+function microphoneInput(){
+  console.log("Test")
 }
