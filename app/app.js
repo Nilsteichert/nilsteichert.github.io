@@ -20,6 +20,7 @@ Application.prototype.start = function() {
     if (self.notes.isAutoMode) {
       if (self.lastNote === note.name) {
         self.update(note)
+        console.log(note.name,note.octave)
       } else {
         self.lastNote = note.name
       }
