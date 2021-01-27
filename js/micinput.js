@@ -10,20 +10,19 @@ Application.prototype.start = function() {
   const self = this
 
   this.tuner.onNoteDetected = function(note) {
-      if (self.lastNote !== note.name) {
+      
 
-        if (checkNote(note.name+"/"+note.octave))
-        {inputIsRight()}
-        else {
-
-          if (!getAnimationOnCooldown())
-          {
-          inputIsWrong();
-          animationCooldown();
-          }
+      if (checkNote(note.name+"/"+note.octave))
+      {inputIsRight()}
+      else {
+        if (!getAnimationOnCooldown() && self.lastNote !== note.name)
+        {
+        inputIsWrong();
+        animationCooldown();
         }
-        self.lastNote = note.name
       }
+      self.lastNote = note.name
+    
   }
 
 
