@@ -12,7 +12,6 @@ Application.prototype.start = function() {
   this.tuner.onNoteDetected = function(note) {
       if (self.lastNote !== note.name) {
 
-        console.log(note.name+"/"+note.octave)
         if (checkNote(note.name+"/"+note.octave))
         {inputIsRight()}
         else {
