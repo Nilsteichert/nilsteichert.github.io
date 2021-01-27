@@ -32,3 +32,14 @@ function sleep(milliseconds) {
     return new Promise(resolve => setTimeout(resolve, milliseconds));
    }
 
+
+animationOnCooldown = false;
+
+async function animationCooldown()
+{
+    animationOnCooldown = true;
+    await sleep(1000);
+    animationOnCooldown = false;
+}
+
+function getAnimationOnCooldown() {return animationOnCooldown}

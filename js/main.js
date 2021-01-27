@@ -53,10 +53,7 @@ WebMidi.enable(function (err) {
 
 
 function selectInputDevice(i){
-  WebMidi.inputs.forEach(element => {
-  document.getElementById(element.name).style="color: rgb(0,0,0)"    
-  document.getElementById(element.name).style.cursor = "pointer"
-  });
+  deselectAllInputs();
   document.getElementById("selectedDevice").innerHTML="Current device: " + WebMidi.inputs[i].name;
   document.getElementById(WebMidi.inputs[i].name).style="color: rgb(150,150,150)"
   document.getElementById(WebMidi.inputs[i].name).style.cursor = "not-allowed"
@@ -65,6 +62,7 @@ function selectInputDevice(i){
 }
 
 function startListening(i) {
+    document.getElementById("combos").style.opacity=0;
     removeListeners();
     var input = WebMidi.inputs[i];
     console.log(input.id);
@@ -77,16 +75,11 @@ function startListening(i) {
 
       if (checkNote(receivedNote)) {
         console.log("right, generating new note");
-        nextNote();
-        answeredRight();  
-        increaseCombo();
-        increaseRight();
+        inputIsRight()
       }
       else {
         console.log("wrong")
-        answeredWrong();
-        resetCombo();
-        increaseWrong();
+        inputIsWrong();
     }
       
     }
@@ -95,6 +88,8 @@ function startListening(i) {
 
 function removeListeners() {
     for( i in WebMidi.inputs ) {WebMidi.inputs[i].removeListener()}
+    try {stopTuner();}
+    catch (error) {}
 }
 
 function checkNote(note){
@@ -141,6 +136,14 @@ function checkNote(note){
 
 
 //currentnote ändern
+function inputIsRight()
+{
+  nextNote();
+  answeredRight();  
+  increaseCombo();
+  increaseRight();
+}
+
 function setOctaves(low,high,init=false)
 {
   document.getElementById("26").style="color: rgb(0,0,0), cursor=pointer"
@@ -275,5 +278,28 @@ function nextNote()
 }
 
 function microphoneInput(){
-  console.log("Test")
+  document.getElementById("combos").style.opacity=0;
+  document.getElementById("selectedDevice").innerHTML="Current device: Microphone";
+  deselectAllInputs();
+  removeListeners();
+  document.getElementById("microphone").style="color: rgb(150,150,150)"    
+  document.getElementById("microphone").style.cursor = "not-allowed"
+  startTuner();
+}
+
+function deselectAllInputs()
+{
+  document.getElementById("microphone").style="color: rgb(0,0,0)"    
+  document.getElementById("microphone").style.cursor = "pointer"
+  WebMidi.inputs.forEach(element => {
+    document.getElementById(element.name).style="color: rgb(0,0,0)"    
+    document.getElementById(element.name).style.cursor = "pointer"
+    });
+}
+
+function inputIsWrong()
+{
+  answeredWrong();
+  resetCombo();
+  increaseWrong();
 }
