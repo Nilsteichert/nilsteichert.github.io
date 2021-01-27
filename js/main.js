@@ -62,7 +62,7 @@ function selectInputDevice(i){
 }
 
 function startListening(i) {
-    document.getElementById("combos").style.opacity=0;
+    document.getElementById("combos").style.opacity=1;
     removeListeners();
     var input = WebMidi.inputs[i];
     console.log(input.id);
