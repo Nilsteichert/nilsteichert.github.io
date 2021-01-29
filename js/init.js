@@ -1,4 +1,5 @@
-settings = new Settings();
-note1 = new note("C/3","C/5");
-yeet = new NoteDrawer("noteDraw",[note1]);
-yeet.drawOneNote();
+var currentNote = [new Note("C/3","C/5")]
+console.log(currentNote)
+var drawer = new NoteDrawer("noteDraw",currentNote,"D")
+drawer.drawOneNote();
+

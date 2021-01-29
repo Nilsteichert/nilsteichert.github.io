@@ -2,7 +2,7 @@ VF = Vex.Flow;
 
 // Takes id of HTML element and note array (up to 4 notes per clef)
 class NoteDrawer{
-    constructor(elementID,notes,keySignature =  "C",showTimeSignature=false){
+    constructor(elementID,notes,keySignature = "C",showTimeSignature=false){
         this.elementID = elementID;
         this.notes = notes;
         this.pauseBass = "E/3";
@@ -16,9 +16,11 @@ class NoteDrawer{
 
          // -> change to jquery
 
-        //Creates div where the image gets rendered:
-        var div = document.getElementById("noteDraw");
+        //Selects div where the image gets rendered:
+        var div = document.getElementById(this.elementID);
         div.innerHTML = ""; 
+
+
 
         // Set up renderer attached to the div
         var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
@@ -27,18 +29,20 @@ class NoteDrawer{
         
         //Context 
         var context = renderer.getContext();
-
-        //max min? -> wenn höhe feststeht
-        //var scalefactor = 1;
-        context.scale(scalefactor,scalefactor)
-
-        // Drawing offsets
-        var staveLenght = (div.clientWidth-((5/100)*div.clientWidth))/scalefactor-((5/100)*div.clientWidth); 
         
 
+        // Drawing offsets
+        var topPadding = div.clientHeight/100*20
+        var braceOffset = 40;
+
+        var staveLenght = (div.clientWidth-((10/100)*div.clientWidth))-braceOffset; 
+
+
+   
+
         // Create a stave at position x, y of width staveLength on the canvas.
-        var staveTreble = new VF.Stave(20, 0, staveLenght);
-        var staveBass = new VF.Stave(20,100,staveLenght);
+        var staveTreble = new VF.Stave(braceOffset, topPadding, staveLenght);
+        var staveBass = new VF.Stave(braceOffset,topPadding+100,staveLenght);
         var brace = new VF.StaveConnector(staveTreble, staveBass).setType(3); 
         var lineRight = new VF.StaveConnector(staveTreble, staveBass).setType(0);
         var lineLeft = new VF.StaveConnector(staveTreble, staveBass).setType(1);
@@ -90,7 +94,14 @@ class NoteDrawer{
         
         if (note.clef == "treble"){voiceTreble.draw(context,staveTreble)}
         else {voiceBass.draw(context,staveBass)}
-        
+
+
+        //Makes svg scaleable
+        const svg = document.querySelector('svg');
+        svg.setAttribute('viewBox', '0 0 '+div.clientWidth+' '+div.clientHeight); 
+        svg.style="width:100%;height:100%;"   
 
     }
+
+    changeNotes
 }

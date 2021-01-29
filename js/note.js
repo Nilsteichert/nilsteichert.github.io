@@ -3,7 +3,7 @@ var accidentals =["#","b",""]
 
 // Takes min and max note, and accidental setting: "b","#","random",""
 
-const note = function(minNote="C/4",maxNote="C/6",accidentalSetting = ""){
+const Note = function(minNote="C/4",maxNote="C/6",accidentalSetting = ""){
     
     this.minOctave = minNote.slice(-1);
     this.maxOctave = maxNote.slice(-1);
@@ -48,9 +48,9 @@ const note = function(minNote="C/4",maxNote="C/6",accidentalSetting = ""){
 
 }
 
-note.prototype.rdmTrueFalse = function() {return (Math.round(Math.random()) == 1)}
+Note.prototype.rdmTrueFalse = function() {return (Math.round(Math.random()) == 1)}
 
-note.prototype.generateAccidental = function(setting){
+Note.prototype.generateAccidental = function(setting){
     switch (setting) {
         case "#":
             if(this.rdmTrueFalse())
@@ -73,19 +73,19 @@ note.prototype.generateAccidental = function(setting){
 
 }
 
-note.prototype.getClef = function(octave)
+Note.prototype.getClef = function(octave)
 {
   if (octave <4 ) {return "bass"}
   else {return "treble";}
 }
 
 // Return note number C=0,B=6
-note.prototype.convertNoteToNumber = function(note)
+Note.prototype.convertNoteToNumber = function(note)
 {
     return notes.indexOf(note.slice(0,1));
 }
 
-note.prototype.setNoteTo = function(note){
+Note.prototype.setNoteTo = function(note){
     this.octave = parseInt(note.slice(-1));
     this.accidental = this.getAccidentalFromNotestring(note);
     this.noteWithoutOctave = note.slice(0,1);
@@ -94,7 +94,7 @@ note.prototype.setNoteTo = function(note){
     
 }
 
-note.prototype.getAccidentalFromNotestring = function(note)
+Note.prototype.getAccidentalFromNotestring = function(note)
 {
     if (note.includes("#") || note.includes("b")){
         return note.slice(1,2);
@@ -104,13 +104,13 @@ note.prototype.getAccidentalFromNotestring = function(note)
 
 
 //0,7 = ["C", "D", "E", "F", "G", "A", "B"] 1,6 = ["D", "E", "F", "G", "A"]
-note.prototype.generateRandomNote = function(min=0,max=7){
+Note.prototype.generateRandomNote = function(min=0,max=7){
 
     console.log(notes.slice(min,max));
     return notes.slice(min,max)[Math.floor(Math.random() * notes.slice(min,max).length)];
 }
 
-note.prototype.generateOctave = function(min, max) {
+Note.prototype.generateOctave = function(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min+1)) + min;
