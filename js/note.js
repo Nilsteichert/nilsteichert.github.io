@@ -43,8 +43,7 @@ const Note = function(minNote="C/4",maxNote="C/6",accidentalSetting = ""){
     this.accidental = this.generateAccidental(accidentalSetting);
 
     this.note = this.noteWithoutOctave + this.accidental + "/" + this.octave;
-    
-    console.log(this.note)
+
 
 }
 
@@ -106,7 +105,7 @@ Note.prototype.getAccidentalFromNotestring = function(note)
 //0,7 = ["C", "D", "E", "F", "G", "A", "B"] 1,6 = ["D", "E", "F", "G", "A"]
 Note.prototype.generateRandomNote = function(min=0,max=7){
 
-    console.log(notes.slice(min,max));
+
     return notes.slice(min,max)[Math.floor(Math.random() * notes.slice(min,max).length)];
 }
 

@@ -1,4 +1,4 @@
-keysignatures = [ 
+const keysignatures = [ 
         "C",
         "F",
         "Bb",
@@ -30,7 +30,7 @@ keysignatures = [
         "D#m",
         "A#m"
 ]
-majorkeysignatures = [
+const majorkeysignatures = [
     "C",
     "F",
     "Bb",
@@ -47,7 +47,7 @@ majorkeysignatures = [
     "F#",
     "C#",
 ]
-minorkeysignatures = [
+const minorkeysignatures = [
     "Am",
     "Dm",
     "Gm",

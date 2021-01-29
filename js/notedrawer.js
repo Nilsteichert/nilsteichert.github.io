@@ -17,6 +17,7 @@ class NoteDrawer{
          // -> change to jquery
 
         //Selects div where the image gets rendered:
+        console.log(this.elementID);
         var div = document.getElementById(this.elementID);
         div.innerHTML = ""; 
 
@@ -29,8 +30,7 @@ class NoteDrawer{
         
         //Context 
         var context = renderer.getContext();
-        
-
+    
         // Drawing offsets
         var topPadding = div.clientHeight/100*20
         var braceOffset = 40;
@@ -82,6 +82,10 @@ class NoteDrawer{
         //Format Voices
         var formatter = new VF.Formatter().joinVoices([voiceTreble]).format([voiceTreble,voiceBass], staveLenght);
 
+        formatter.getMinTotalWidth()
+
+        
+        
         // Connect it to the rendering context and draw!
         staveTreble.setContext(context).draw();
         staveBass.setContext(context).draw();
@@ -99,9 +103,8 @@ class NoteDrawer{
         //Makes svg scaleable
         const svg = document.querySelector('svg');
         svg.setAttribute('viewBox', '0 0 '+div.clientWidth+' '+div.clientHeight); 
-        svg.style="width:100%;height:100%;"   
+        svg.style="width:100%;height:100%;"  
 
     }
-
-    changeNotes
 }
+
