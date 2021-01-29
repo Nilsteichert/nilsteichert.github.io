@@ -5,18 +5,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
+
+
 <body>
 
+<!-- Load libarys -->
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="js/vexflow-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/webmidi@2.5.1"></script>
+
+<!-- Load scripts without reference to the document -->
 <script src="js/note.js"></script>
 <script src="js/notedrawer.js"></script>
 <script src="js/box-animator.js"></script>
+<script src="js/midi-listener.js"></script>
 
 
 
@@ -24,7 +32,7 @@
 
   
     <!--Navbar  -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="index.html">MusicTrainer</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -62,8 +70,44 @@
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
-  </nav>
+  </nav> -->
 
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand abs" href="#">Navbar 1</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="collapsingNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="//codeply.com">Codeply</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#myAlert" data-toggle="collapse">Link</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="https://bootswatch.com/darkly/#" role="button" aria-haspopup="true" aria-expanded="false">Select the yeet</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="https://bootswatch.com/darkly/#">Action</a>
+                <a class="dropdown-item" href="https://bootswatch.com/darkly/#">Another action</a>
+                <a class="dropdown-item" href="https://bootswatch.com/darkly/#">Something else here</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="https://bootswatch.com/darkly/#">Separated link</a>
+              </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="" data-target="#myModal" data-toggle="modal">About</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+  
   <div class="alert alert-success alert-dismissible">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong>Success!</strong> Indicates a successful or positive action.
@@ -73,16 +117,10 @@
 
 <!--Site content  -->
 
-<div class="container mt-5" >
-  <div class="row">
-    <div class="col-4"></div>
-    <div class="col-4 " id=noteDraw style="background-color: rgb(255,255,255); padding: 0px; height: 400px; border-radius:4%">
-       
-    </div>
-    <div class="col-4"></div>
-  </div>
-
-
+<div class="container-fluid mt-5" >
+  <div class=row>
+    <div class="mx-auto d-block" id=noteDraw style="background-color: rgb(255,255,255); width:500px;height: 400px; border-radius:4%"> </div>
+  </div>    
 </div>
 
 

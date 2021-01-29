@@ -20,6 +20,8 @@ class NoteDrawer{
         console.log(this.elementID);
         var div = document.getElementById(this.elementID);
         div.innerHTML = ""; 
+      
+        
 
 
 
@@ -30,9 +32,9 @@ class NoteDrawer{
         
         //Context 
         var context = renderer.getContext();
-    
+
         // Drawing offsets
-        var topPadding = div.clientHeight/100*20
+        var topPadding = div.clientHeight/100*21.7    
         var braceOffset = 40;
 
         var staveLenght = (div.clientWidth-((10/100)*div.clientWidth))-braceOffset; 
@@ -81,9 +83,6 @@ class NoteDrawer{
 
         //Format Voices
         var formatter = new VF.Formatter().joinVoices([voiceTreble]).format([voiceTreble,voiceBass], staveLenght);
-
-        formatter.getMinTotalWidth()
-
         
         
         // Connect it to the rendering context and draw!
@@ -104,6 +103,11 @@ class NoteDrawer{
         const svg = document.querySelector('svg');
         svg.setAttribute('viewBox', '0 0 '+div.clientWidth+' '+div.clientHeight); 
         svg.style="width:100%;height:100%;"  
+
+  
+ 
+
+        
 
     }
 }

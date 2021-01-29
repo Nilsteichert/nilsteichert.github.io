@@ -5,6 +5,8 @@ console.log("Drawer set")
 drawer.drawOneNote();
 console.log("Note Drawn")
 
+midiL = new MidiListener();
+
 animator = new Animator("noteDraw","red");
 console.log(animator)
 function testyeet(){
