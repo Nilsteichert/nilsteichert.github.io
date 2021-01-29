@@ -1,11 +1,19 @@
-//Global Variables
-var firstNote,secondNote, lowestOctave, highestOctave;
-var keysignature = "C";
-var withAccidental = false;
+//Load settings from cookies
+settings = new Settings();
 
-//Initialize Settings
+var lowestNote = settings.lowestNote;
+var highestNote = settings.highestNote;
+var keysignature = settings.keysignature;
+var withAccidental = settings.keysignature;
+
+var firstNote,secondNote, lowestOctave, highestOctave;
+
+
+
+
+
 setOctaves(2,6,true);
-setKeySignature("C",true)
+setKeySignature(keysignature)
 setCurrentNote(generateRandomNote());
 setSecondNote(generateRandomNote());
 
@@ -181,6 +189,7 @@ function switchAccidentals(){
 
 function setKeySignature(selectedKeySignature = "random",init=false)
 {
+  settings.setKeysignature(selectedKeySignature);
   setKeySignatureDesignToDefault()
   switch (selectedKeySignature) {
     case "random":

@@ -15,6 +15,7 @@ div.innerHTML = "";
 var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
 // Configure the rendering context.
+
 renderer.resize(div.clientWidth,div.clientHeight);
 var context = renderer.getContext();
 context.scale(scalefactor,scalefactor);
@@ -104,11 +105,11 @@ catch(error){}
 
 // Create a first voice in 4/4 and add the notes from notes
 var voice = new VF.Voice({num_beats: 4,  beat_value: 4,});
-voice.addTickables(notes);
+voice.addTickables(notes); //Voice treble 
 
 // Create a second voice in 4/4 and add the notes from notes2
 var voice2 = new VF.Voice({num_beats: 4,  beat_value: 4,});
-voice2.addTickables(notes2);
+voice2.addTickables(notes2); //voice bass
 
 
 //Format and draw notes

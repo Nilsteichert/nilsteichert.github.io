@@ -3,14 +3,17 @@ var accidentals =["#","b",""]
 
 // Takes min and max note, and accidental setting: "b","#","random",""
 
-const note = function(minNote="D/5",maxNote="B/5",accidentalSetting = ""){
+const note = function(minNote="C/4",maxNote="C/6",accidentalSetting = ""){
     
     this.minOctave = minNote.slice(-1);
     this.maxOctave = maxNote.slice(-1);
 
+    // Is accord ??
+
     this.minNote = this.convertNoteToNumber(minNote); //c=0,b=6;
     this.maxNote = this.convertNoteToNumber(maxNote);
-    if (this.maxNote == 0) {this.maxNote--} 
+    //if (this.maxNote == 0) {this.maxNote--} 
+
     //swaps octave if entered in wrong order
     if(this.minOctave > this.maxOctave){
         [this.minOctave,this.maxOctave] = [this.maxOctave,this.minOctave];
@@ -19,15 +22,22 @@ const note = function(minNote="D/5",maxNote="B/5",accidentalSetting = ""){
 
 
     this.octave = this.generateOctave(this.minOctave,this.maxOctave)
+    this.clef = this.getClef(this.octave)
     
-    if (this.minOctave == this.maxOctave)  {this.noteWithoutOctave = this.generateRandomNote(this.minNote,this.maxNote)}
+    //If all possible notes are in the same octave
+    if (this.minOctave == this.maxOctave)
+      {this.noteWithoutOctave = this.generateRandomNote(this.minNote,this.maxNote+1)}
+
+    //If all possible notes are in the same octave as the minimum note
     else if (this.octave ==this.minOctave) {
         this.noteWithoutOctave = this.generateRandomNote(this.minNote,7)
-        if (this.minNote == 0) {this.minNote--}
     }
-    else if (this.octave ==this.maxOctave) {
-        if (this.maxNote == 6) {this.maxNote++;}
-        this.noteWithoutOctave = this.generateRandomNote(0,this.maxNote)}
+
+    //If all possible notes are in the same octave as the maximum note
+    else if (this.octave ==this.maxOctave) {        
+        this.noteWithoutOctave = this.generateRandomNote(0,this.maxNote+1)}
+
+    //If no possible note is in max or min octave   
     else {this.noteWithoutOctave = this.generateRandomNote()}
 
     this.accidental = this.generateAccidental(accidentalSetting);
@@ -63,6 +73,11 @@ note.prototype.generateAccidental = function(setting){
 
 }
 
+note.prototype.getClef = function(octave)
+{
+  if (octave <4 ) {return "bass"}
+  else {return "treble";}
+}
 
 // Return note number C=0,B=6
 note.prototype.convertNoteToNumber = function(note)
@@ -87,9 +102,10 @@ note.prototype.getAccidentalFromNotestring = function(note)
         else {return ""}
 }
 
-note.prototype.generateRandomNote = function(min=0,max=6){
 
-    max++;
+//0,7 = ["C", "D", "E", "F", "G", "A", "B"] 1,6 = ["D", "E", "F", "G", "A"]
+note.prototype.generateRandomNote = function(min=0,max=7){
+
     console.log(notes.slice(min,max));
     return notes.slice(min,max)[Math.floor(Math.random() * notes.slice(min,max).length)];
 }

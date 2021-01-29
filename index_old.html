@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Notetrainer</title>
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+      body{
+
+      background-color:rgb(34, 34, 34);
+      margin:0;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      </style>
+
+      
+</head>
+
+<body>
+    <div class="navbar">
+      <a id="selectedDevice">No MIDI-In found</a>
+      <div class="dropdown">
+        <button class="dropbtn">Select Input 
+        </button>
+        <div id="inputDeviceSelector" class="dropdown-content">
+        </div>
+      </div> 
+      <div class="dropdown">
+        <button class="dropbtn">Select range</button>
+        <div id="rangeSelector" class="dropdown-content">
+          <a id="26" onclick="setOctaves(2,6)">Bass and violin</a>
+          <a id="46" onclick="setOctaves(4,6)">Violin clef</a>
+          <a id="24" onclick="setOctaves(2,4)">Bass clef</a>
+          <a id="17" onclick="setOctaves(1,7)">Whole keyboard</a>
+        </div> 
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Major keys</button>
+        <div id="keySelectorMajor" class="dropdown-content">
+          <a id ="randommajor" onclick="setKeySignature('major')">Random</a>
+          <a id ="C" onclick="setKeySignature('C')">C-Major</a>
+          <a id ="G" onclick="setKeySignature('G')">G-Major</a>
+          <a id ="D" onclick="setKeySignature('D')">D-Major</a>
+          <a id ="A" onclick="setKeySignature('A')">A-Major</a>
+          <a id ="E" onclick="setKeySignature('E')">E-Major</a>
+          <a id ="B" onclick="setKeySignature('B')">B-Major</a>
+          <a id ="F#" onclick="setKeySignature('F#')">F♯-Major</a>
+          <a id ="C#" onclick="setKeySignature('C#')">C♯-Major</a>          
+          <a id ="F" onclick="setKeySignature('F')">F-Major</a>
+          <a id ="Bb" onclick="setKeySignature('Bb')">B♭-Major</a>
+          <a id ="Eb" onclick="setKeySignature('Eb')">E♭-Major</a>
+          <a id ="Ab" onclick="setKeySignature('Ab')">A♭-Major</a>
+          <a id ="Db" onclick="setKeySignature('Db')">D♭-Major</a>
+          <a id ="Gb" onclick="setKeySignature('Gb')">G♭-Major</a>
+          <a id ="Cb" onclick="setKeySignature('Cb')">C♭-Major</a>          
+        </div> 
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Minor keys</button>
+        <div id="keySelectorMinor" class="dropdown-content">
+          <a id ="randomminor" onclick="setKeySignature('minor')">Random</a>
+          <a id ="Am" onclick="setKeySignature('Am')">A-Minor</a>
+          <a id ="Dm" onclick="setKeySignature('Dm')">D-Minor</a>
+          <a id ="Gm" onclick="setKeySignature('Gm')">G-Minor</a>
+          <a id ="Cm" onclick="setKeySignature('Cm')">C-Minor</a>
+          <a id ="Fm" onclick="setKeySignature('Fm')">F-Minor</a>
+          <a id ="Bbm" onclick="setKeySignature('Bbm')">B♭-Minor</a>
+          <a id ="Ebm" onclick="setKeySignature('Ebm')">E♭-Minor</a>
+          <a id ="Abm" onclick="setKeySignature('Abm')">A♭-Minor</a>          
+          <a id ="Em" onclick="setKeySignature('Em')">E-Minor</a>
+          <a id ="Bm" onclick="setKeySignature('Bm')">B-Minor</a>
+          <a id ="F#m" onclick="setKeySignature('F#m')">F♯-Minor</a>
+          <a id ="C#m" onclick="setKeySignature('C#m')">C♯-Minor</a>
+          <a id ="G#m" onclick="setKeySignature('G#m')">G♯-Minor</a>
+          <a id ="D#m" onclick="setKeySignature('D#m')">D♯-Minor</a>
+          <a id ="A#m" onclick="setKeySignature('A#m')">A♯-Minor</a>
+          </div>
+      </div>
+      <a style="float: right; cursor: pointer" id="accidentalSwitch" onclick="switchAccidentals()">♭ ♯</a>
+    </div>
+
+
+<div id ="websiteContent">  
+  <div id="boxshadow">
+    <div id="noteRenderer">
+      <div id="svgnote">
+      </div>
+    </div>
+  </div>
+  
+  <div id="combos">
+    <div id="combo">
+      <br>
+      Combo: 0
+    </div>
+    <div id="counterRight">
+      <br>
+      Right: 0
+    </div>
+    <div id=counterWrong>
+      <br>
+      Wrong: 0
+    </div>
+  </div>
+</div>  
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="js/note.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/keysignatures.js"></script>
+    <script src="js/counter.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/vexflow-min.js"></script>
+    <script src="js/randomnote.js"></script>
+    <script src="js/notedisplayer.js"></script>
+    <script src="js/webmidi.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+   
+    <script src="js/aubio.js"></script>
+    <script src="js/tuner.js"></script>
+    <script src="js/micinput.js"></script>
+</body>
+</html>
