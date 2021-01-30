@@ -1,34 +1,100 @@
-<mxfile host="65bd71144e" modified="2021-01-30T17:53:44.324Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" version="13.10.0" etag="9MwEK-6nnj_uOFqxjNgA" type="embed">
-    <diagram id="hTql7uLvHU7AhrSEYBGp" name="Page-1">
-        <mxGraphModel dx="493" dy="722" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+<mxfile host="65bd71144e" modified="2021-01-30T19:54:23.196Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" etag="S-Y1tPFVZUIbx_WxxPNr" version="13.10.0" type="embed" pages="2">
+    <diagram id="hTql7uLvHU7AhrSEYBGp" name="MainProgram">
+        <mxGraphModel dx="956" dy="723" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="2" value="Note&#10;(minNote: string (&quot;C/4&quot;),&#10;maxNote:string,&#10;accidentalSetting:string)&#10;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=100;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-                    <mxGeometry x="10" y="60" width="200" height="310" as="geometry">
+                <mxCell id="2" value="Note&#10;minNote: string (&quot;C/4&quot;),&#10;maxNote:string,&#10;accidentalSetting:string)&#10;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=100;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                    <mxGeometry x="270" y="20" width="200" height="310" as="geometry">
                         <mxRectangle x="10" y="60" width="60" height="26" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="3" value="+note:string  (&quot;C/4&quot;)&#10;+noteWithoutOctave:string(&quot;C&quot;)&#10;+octave:int&#10;+clef:string&#10;+accidental:string (&quot;#&quot;,&quot;b&quot;,&quot;random&quot;)&#10;+hasAccidental:bool&#10;&#10;+minNote&#10;+maxNote&#10;+minOctave&#10;+maxOctave&#10;&#10;&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="2">
+                <mxCell id="3" value="+note:string  (&quot;C/4&quot;)&#10;+noteWithoutOctave:string(&quot;C&quot;)&#10;+octave:int&#10;+clef:string&#10;+accidental:string (&quot;#&quot;,&quot;b&quot;,&quot;random&quot;)&#10;+hasAccidental:bool&#10;&#10;+minNote&#10;+maxNote&#10;+minOctave&#10;+maxOctave&#10;&#10;&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="2" vertex="1">
                     <mxGeometry y="100" width="200" height="170" as="geometry"/>
                 </mxCell>
-                <mxCell id="4" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="2">
+                <mxCell id="4" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="2" vertex="1">
                     <mxGeometry y="270" width="200" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="5" value="+ setNoteTo(&quot;note&quot;): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="2">
+                <mxCell id="5" value="+ setNoteTo(&quot;note&quot;): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="2" vertex="1">
                     <mxGeometry y="278" width="200" height="32" as="geometry"/>
                 </mxCell>
-                <mxCell id="7" value="KeySignature&#10;(keySignature:string)&#10;(&quot;minor&quot;,&quot;major&quot;,&#10;&quot;random&quot;,&quot;D&quot;)" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=70;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-                    <mxGeometry x="240" y="110" width="330" height="340" as="geometry"/>
+                <mxCell id="7" value="KeySignature&#10;(keySignature:string)&#10;(&quot;minor&quot;,&quot;major&quot;,&#10;&quot;random&quot;,&quot;D&quot;)" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=70;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="20" width="320" height="340" as="geometry"/>
                 </mxCell>
-                <mxCell id="8" value="+ keySignature:string&#10;+ dict_C:{dict}&#10;+ keysignatures:[string]&#10;+ majorkeysignatures:[string]&#10;+ minorkeySignatures:[string]&#10;+ equivalentMajorKey:string&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="7">
-                    <mxGeometry y="70" width="330" height="160" as="geometry"/>
+                <mxCell id="8" value="+ keySignature:string&#10;+ dict_C:{dict}&#10;+ keysignatures:[string]&#10;+ majorkeysignatures:[string]&#10;+ minorkeySignatures:[string]&#10;+ equivalentMajorKey:string&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="7" vertex="1">
+                    <mxGeometry y="70" width="320" height="160" as="geometry"/>
                 </mxCell>
-                <mxCell id="9" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="7">
-                    <mxGeometry y="230" width="330" height="8" as="geometry"/>
+                <mxCell id="9" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="7" vertex="1">
+                    <mxGeometry y="230" width="320" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="10" value="+ generateKeySignature(&quot;string&quot;):string&#10;+ noteInKeySignature(note:note,keysignature:string): note&#10;+ getEquivalentMajorKeySignature(string): string&#10;+ getChangedNotes(&quot;string&quot;):{dict}&#10;&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="7">
-                    <mxGeometry y="238" width="330" height="102" as="geometry"/>
+                <mxCell id="10" value="+ generateKeySignature(&quot;string&quot;):string&#10;+ noteInKeySignature(note,keysignature:string): note&#10;+ getEquivalentMajorKeySignature(string): string&#10;+ getChangedNotes(&quot;string&quot;):{dict}&#10;&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="7" vertex="1">
+                    <mxGeometry y="238" width="320" height="102" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="NoteChecker" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="20" width="180" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="+ keysignature:KeySignature" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="11">
+                    <mxGeometry y="26" width="180" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="11">
+                    <mxGeometry y="52" width="180" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="+ checkNote(note,string): bool&#10;+ getMidiNote(note):note" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="11">
+                    <mxGeometry y="60" width="180" height="50" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="wvGUkejmloXZyvdXfBnv" name="Ablaufplan">
+        <mxGraphModel dx="462" dy="506" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="xHF6H1L_9ALWrdnBZdLW-0"/>
+                <mxCell id="xHF6H1L_9ALWrdnBZdLW-1" parent="xHF6H1L_9ALWrdnBZdLW-0"/>
+                <mxCell id="b8A--00CPy-Qmkr8ePNA-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="xHF6H1L_9ALWrdnBZdLW-1" source="xHF6H1L_9ALWrdnBZdLW-4" target="b8A--00CPy-Qmkr8ePNA-3">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="75" y="35"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="b8A--00CPy-Qmkr8ePNA-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="xHF6H1L_9ALWrdnBZdLW-1" source="xHF6H1L_9ALWrdnBZdLW-4" target="b8A--00CPy-Qmkr8ePNA-7">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="295" y="35"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="xHF6H1L_9ALWrdnBZdLW-4" value="Key Signature" style="html=1;" vertex="1" parent="xHF6H1L_9ALWrdnBZdLW-1">
+                    <mxGeometry x="130" y="10" width="110" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="b8A--00CPy-Qmkr8ePNA-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="xHF6H1L_9ALWrdnBZdLW-1" source="b8A--00CPy-Qmkr8ePNA-0" target="b8A--00CPy-Qmkr8ePNA-3">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="75" y="105"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="b8A--00CPy-Qmkr8ePNA-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="xHF6H1L_9ALWrdnBZdLW-1" source="b8A--00CPy-Qmkr8ePNA-0" target="b8A--00CPy-Qmkr8ePNA-7">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="295" y="100"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="b8A--00CPy-Qmkr8ePNA-0" value="Note(min,max)" style="html=1;" vertex="1" parent="xHF6H1L_9ALWrdnBZdLW-1">
+                    <mxGeometry x="130" y="80" width="110" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="b8A--00CPy-Qmkr8ePNA-3" value="notedrawer" style="html=1;" vertex="1" parent="xHF6H1L_9ALWrdnBZdLW-1">
+                    <mxGeometry x="20" y="160" width="110" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="b8A--00CPy-Qmkr8ePNA-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="xHF6H1L_9ALWrdnBZdLW-1" source="b8A--00CPy-Qmkr8ePNA-6" target="b8A--00CPy-Qmkr8ePNA-7">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="b8A--00CPy-Qmkr8ePNA-6" value="Listener" style="html=1;" vertex="1" parent="xHF6H1L_9ALWrdnBZdLW-1">
+                    <mxGeometry x="240" y="260" width="110" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="b8A--00CPy-Qmkr8ePNA-7" value="NoteChecker" style="html=1;" vertex="1" parent="xHF6H1L_9ALWrdnBZdLW-1">
+                    <mxGeometry x="240" y="160" width="110" height="50" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

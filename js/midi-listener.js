@@ -1,40 +1,22 @@
 class MidiListener{
     constructor(){
-        this.enable2();
-        //function to fill dropdown
-    }
-    enabledTest(err){
-        if(err){console.log("F")}
-        else{console.log("Yeeee")}
+        this.enable(function () {
+            this.fillDropdown(WebMidi.inputs);
+        });
     }
 
-
-    enable(){
+    enable(callback) {
+        console.log("test");
         WebMidi.enable(function (err) {
             //Enable WebMidi
             if (err) {
-              console.log("WebMidi could not be enabled.", err);
-              window.alert("WebMidi is not supported by your Browser.\nPlease use Google Chrome or any other browser with WebMidi support!")
+                // An error occured while starting WebMidi
+                console.log("WebMidi could not be enabled.", err);
+                window.alert("WebMidi is not supported by your Browser.")
             } 
             else {
-                console.log("WebMidi enabled!");
-                var list = document.getElementById("sourceSelector");
-                var midiHeader = document.createElement("h6");
-                midiHeader.classList.add("dropdown-header");
-                midiHeader.appendChild(document.createTextNode("MIDI-Devices"));
-                list.appendChild(midiHeader);
-
-                WebMidi.inputs.forEach(i => {
-                    var a = document.createElement("a")
-                    a.appendChild(document.createTextNode(i.name));
-                    a.href = `javascript:midiListener.selectDevice("${i.id}")`;
-                    a.classList.add("dropdown-item");
-                    a.id = i.id;
-                    list.appendChild(a);   
-                })
-
-                var seperator = document.createElement("div");
-                seperator.classList.add("dropdown-divider");
+                // WebMidi enabled successfully
+                callback();
             } 
         });
     }
@@ -45,9 +27,23 @@ class MidiListener{
         document.getElementById(this.selectedDeviceId).classList.add("disabled");
     }
 
-    enable2(){
-        WebMidi.enable(this.enabledTest(err)
+    fillDropdown(inputs = WebMidi.inputs){
+        var list = document.getElementById("sourceSelector");
+        var midiHeader = document.createElement("h6");
+        midiHeader.classList.add("dropdown-header");
+        midiHeader.appendChild(document.createTextNode("MIDI-Devices"));
+        list.appendChild(midiHeader);
 
-          );
+        inputs.forEach(i => {
+            var a = document.createElement("a")
+            a.appendChild(document.createTextNode(i.name));
+            a.href = `javascript:midiListener.selectDevice("${i.id}")`;
+            a.classList.add("dropdown-item");
+            a.id = i.id;
+            list.appendChild(a);   
+        })
+
+        var seperator = document.createElement("div");
+        seperator.classList.add("dropdown-divider");
     }
 }

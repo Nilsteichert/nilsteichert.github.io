@@ -24,45 +24,50 @@ class Note {
 
         this.octave = this.generateOctave(this.minOctave, this.maxOctave);
         this.clef = this.getClef(this.octave);
-
-        //If all possible notes are in the same octave
-        if (this.minOctave == this.maxOctave) { this.noteWithoutOctave = this.generateRandomNote(this.minNote, this.maxNote + 1); }
+        this.noteWithoutOctave = this.generateNoteWithoutOctave();
 
 
-        //If all possible notes are in the same octave as the minimum note
-        else if (this.octave == this.minOctave) {
-            this.noteWithoutOctave = this.generateRandomNote(this.minNote, 7);
-        }
-
-
-        //If all possible notes are in the same octave as the maximum note
-        else if (this.octave == this.maxOctave) {
-            this.noteWithoutOctave = this.generateRandomNote(0, this.maxNote + 1);
-        }
-
-
-        //If no possible note is in max or min octave   
-        else { this.noteWithoutOctave = this.generateRandomNote(); }
 
         this.accidental = this.generateAccidental(accidentalSetting);
         if (this.accidental != "") {this.hasAccidental = true}
 
         this.note = this.noteWithoutOctave + this.accidental + "/" + this.octave;
 
-
     }
-    rdmTrueFalse() { return (Math.round(Math.random()) == 1); }
+
+
+
+    generateNoteWithoutOctave(){
+                //If all possible notes are in the same octave
+                if (this.minOctave == this.maxOctave) { var noteWithoutOctave = this.generateNoteFromNumber(this.minNote, this.maxNote + 1); }
+                
+                //If all possible notes are in the same octave as the minimum note
+                else if (this.octave == this.minOctave) {
+                    noteWithoutOctave = this.generateNoteFromNumber(this.minNote, 7);
+                }
+                //If all possible notes are in the same octave as the maximum note
+                else if (this.octave == this.maxOctave) {
+                    noteWithoutOctave = this.generateNoteFromNumber(0, this.maxNote + 1);
+                }
+                //If no possible note is in max or min octave   
+                else { noteWithoutOctave = this.generateNoteFromNumber(); }
+
+                return noteWithoutOctave;
+    }
+
+    rdmBool() { return (Math.round(Math.random()) == 1); }
+
     generateAccidental(setting) {
         switch (setting) {
             case "#":
-                if (this.rdmTrueFalse()) { return "#"; }
+                if (this.rdmBool()) { return "#"; }
 
             case "b":
-                if (this.rdmTrueFalse()) { return "#"; }
+                if (this.rdmBool()) { return "#"; }
 
             case "random":
-                if (this.rdmTrueFalse()) {
-                    if (this.rdmTrueFalse()) { return "b"; }
+                if (this.rdmBool()) {
+                    if (this.rdmBool()) { return "b"; }
                     else { return "#"; }
                 }
 
@@ -71,10 +76,12 @@ class Note {
         }
 
     }
+
     getClef(octave) {
         if (octave < 4) { return "bass"; }
         else { return "treble"; }
     }
+
     // Return note number C=0,B=6
     convertNoteToNumber(note) {
         return notes.indexOf(note.slice(0, 1));
@@ -86,6 +93,13 @@ class Note {
         this.noteWithoutOctave = note.slice(0, 1);
         this.clef = this.getClef(this.octave);
         this.note = note;
+        this.maxNote = this.note;
+        this.minNote = this.note;
+        this.minOctave = this.octave;
+        this.maxOctave = this.octave;
+
+        
+        return this;
 
 
     }
@@ -96,8 +110,7 @@ class Note {
         else { return ""; }
     }
     //0,7 = ["C", "D", "E", "F", "G", "A", "B"] 1,6 = ["D", "E", "F", "G", "A"]
-    generateRandomNote(min = 0, max = 7) {
-
+    generateNoteFromNumber(min = 0, max = 7) {
 
         return notes.slice(min, max)[Math.floor(Math.random() * notes.slice(min, max).length)];
     }

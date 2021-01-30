@@ -102,7 +102,7 @@ class KeySignature{
         if (note.hasAccidental) {return note;}
     
         //Get dictornary with all accidentals per key signature
-        var changedNotes = getChangedNotes(keySignature);
+        var changedNotes = this.getChangedNotes(keySignature);
         var changedNoteOctave = note.octave;
         var changedNoteWithoutOctave = note.noteWithoutOctave;
         
@@ -114,10 +114,10 @@ class KeySignature{
                         if (note.noteWithoutOctave== "C"){changedNoteOctave-=1;}
                 }
                 if (keySignature == "C#"){
-                        if (note.noteWithoutOctave== "B"){changedNoteOctave-=1;}
+                        if (note.noteWithoutOctave== "B"){changedNoteOctave+=1;}
                 }
         
-                changedNoteWithoutOctave = note.noteWithoutOctave.replace(note.noteWithoutOctave,changedNotes[noteWithoutOctave]);        
+                changedNoteWithoutOctave = note.noteWithoutOctave.replace(note.noteWithoutOctave,changedNotes[note.noteWithoutOctave]);        
                 //Replace note with changed note
                 var changedNote = new Note().setNoteTo(changedNoteWithoutOctave+"/"+changedNoteOctave);
 
@@ -151,8 +151,7 @@ class KeySignature{
         
 
         getChangedNotes(keySignature){
-                
-                console.log(keySignature);
+
                 switch (keySignature) {
                 
                         case "C":
