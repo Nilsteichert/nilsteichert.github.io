@@ -49,7 +49,7 @@ class KeySignature{
                 "F#",
                 "C#",
         ]
-        this.minorkeysignaturesminorkeysignatures = [
+        this.minorkeysignatures = [
                 "Am",
                 "Dm",
                 "Gm",
@@ -79,11 +79,11 @@ class KeySignature{
         generateKeySignature(keySignature = null){
                 switch (keySignature) {
                         case "minor":
-                                return minorkeysignatures[Math.floor(Math.random() * minorkeysignatures.length)];
+                                return this.minorkeysignatures[Math.floor(Math.random() * this.minorkeysignatures.length)];
                         case "major":
-                                return majorkeysignatures[Math.floor(Math.random() * majorkeysignatures.length)];
+                                return this.majorkeysignatures[Math.floor(Math.random() * this.majorkeysignatures.length)];
                         case "random":
-                                return keysignatures[Math.floor(Math.random() * keysignatures.length)];
+                                return this.keysignatures[Math.floor(Math.random() * this.keysignatures.length)];
                         case null:
                                 return "C";
                         default:
@@ -148,10 +148,12 @@ class KeySignature{
                         }
                 return keySignature;
                 }
-        }
-        getChangedNotes(keySignature)
-                {
-                    switch (keySignature) {
+        
+
+        getChangedNotes(keySignature){
+                
+                console.log(keySignature);
+                switch (keySignature) {
                 
                         case "C":
                                 return {};
@@ -183,10 +185,12 @@ class KeySignature{
                                 return {F: "F#",C: "C#",G: "G#",D: "D#",A: "A#",E: "F"};
                         case "C#":
                                 return {F: "F#",C: "C#",G: "G#",D: "D#",A: "A#",E: "F",B: "C"};
-                        default: return {};
+                        default:
+                                 return {};
                      
                             
                     }
+                }
 
 }
 

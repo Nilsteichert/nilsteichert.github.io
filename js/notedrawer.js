@@ -2,9 +2,9 @@ VF = Vex.Flow;
 
 // Takes id of HTML element and note array (up to 4 notes per clef)
 class NoteDrawer{
-    constructor(elementID,notes,keySignature = "C",showTimeSignature=false){
+    constructor(elementID,note,keySignature = "C",showTimeSignature=false){
         this.elementID = elementID;
-        this.notes = notes;
+        this.note = note;
         this.pauseBass = "E/3";
         this.pauseTreble = "C/5";
         this.keySignature = keySignature;
@@ -12,7 +12,7 @@ class NoteDrawer{
         this.timeSignature = "4/4"
     }
 
-    drawOneNote(note = this.notes[0]) {
+    drawOneNote(note = this.note) {
 
          // -> change to jquery
 
