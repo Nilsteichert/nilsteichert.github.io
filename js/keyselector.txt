@@ -1,0 +1,42 @@
+ <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonMajor" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Major keys
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonMajor">
+        <a class="dropdown-item"id="randommajor" href="javascript:void(0)" onclick="app.selectKeySignature('major')">Random</a>
+        <a class="dropdown-item"id="C" href="javascript:void()" onclick="app.selectKeySignature('C')">C-Major</a>
+        <a class="dropdown-item"id="G" href="javascript:void()" onclick="app.selectKeySignature('G')">G-Major</a>
+        <a class="dropdown-item"id="D" href="javascript:void()" onclick="app.selectKeySignature('D')">D-Major</a>
+        <a class="dropdown-item"id="A" href="javascript:void()" onclick="app.selectKeySignature('A')">A-Major</a>
+        <a class="dropdown-item"id="E" href="javascript:void()" onclick="app.selectKeySignature('E')">E-Major</a>
+        <a class="dropdown-item"id="B" href="javascript:void()" onclick="app.selectKeySignature('B')">B-Major</a>
+        <a class="dropdown-item"id="F#"href="javascript:void()" onclick="app.selectKeySignature('F#')">F♯-Major</a>
+        <a class="dropdown-item"id="C#"href="javascript:void()" onclick="app.selectKeySignature('C#')">C♯-Major</a>          
+        <a class="dropdown-item"id="F" href="javascript:void()" onclick="app.selectKeySignature('F')">F-Major</a>
+        <a class="dropdown-item"id="Bb"href="javascript:void()" onclick="app.selectKeySignature('Bb')">B♭-Major</a>
+        <a class="dropdown-item"id="Eb"href="javascript:void()" onclick="app.selectKeySignature('Eb')">E♭-Major</a>
+        <a class="dropdown-item"id="Ab"href="javascript:void()" onclick="app.selectKeySignature('Ab')">A♭-Major</a>
+        <a class="dropdown-item"id="Db"href="javascript:void()" onclick="app.selectKeySignature('Db')">D♭-Major</a>
+        <a class="dropdown-item"id="Gb"href="javascript:void()" onclick="app.selectKeySignature('Gb')">G♭-Major</a>
+        <a class="dropdown-item"id="Cb"href="javascript:void()" onclick="app.selectKeySignature('Cb')">C♭-Major</a> 
+      </div>
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonMinor" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Minor keys
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonMinor">
+          <a class="dropdown-item" id ="randomminor" onclick="selectKeySignature('minor')">Random</a>
+          <a class="dropdown-item" id ="Am" href="javascript:void()" onclick="selectKeySignature('Am')">A-Minor</a>
+          <a class="dropdown-item" id ="Dm" href="javascript:void()" onclick="selectKeySignature('Dm')">D-Minor</a>
+          <a class="dropdown-item" id ="Gm" href="javascript:void()" onclick="selectKeySignature('Gm')">G-Minor</a>
+          <a class="dropdown-item" id ="Cm" href="javascript:void()" onclick="selectKeySignature('Cm')">C-Minor</a>
+          <a class="dropdown-item" id ="Fm" href="javascript:void()" onclick="selectKeySignature('Fm')">F-Minor</a>
+          <a class="dropdown-item" id ="Bbm" href="javascript:void()" onclick="selectKeySignature('Bbm')">B♭-Minor</a>
+          <a class="dropdown-item" id ="Ebm" href="javascript:void()" onclick="selectKeySignature('Ebm')">E♭-Minor</a>
+          <a class="dropdown-item" id ="Abm" href="javascript:void()" onclick="selectKeySignature('Abm')">A♭-Minor</a>          
+          <a class="dropdown-item" id ="Em" href="javascript:void()" onclick="selectKeySignature('Em')">E-Minor</a>
+          <a class="dropdown-item" id ="Bm" href="javascript:void()" onclick="selectKeySignature('Bm')">B-Minor</a>
+          <a class="dropdown-item" id ="F#m" href="javascript:void()" onclick="selectKeySignature('F#m')">F♯-Minor</a>
+          <a class="dropdown-item" id ="C#m" href="javascript:void()" onclick="selectKeySignature('C#m')">C♯-Minor</a>
+          <a class="dropdown-item" id ="G#m" href="javascript:void()" onclick="selectKeySignature('G#m')">G♯-Minor</a>
+          <a class="dropdown-item" id ="D#m" href="javascript:void()" onclick="selectKeySignature('D#m')">D♯-Minor</a>
+          <a class="dropdown-item" id ="A#m" href="javascript:void()" onclick="selectKeySignature('A#m')">A♯-Minor</a>
+      </div> 

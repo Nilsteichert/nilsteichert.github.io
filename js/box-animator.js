@@ -1,10 +1,11 @@
 class Animator{
-    constructor(elementID,color){
+    constructor(elementID){
         this.elementID = elementID;
-        this.color = this.getColor(color);
+        this.color = this.getRGB(undefined);
     }
-
-    getColor(color)
+    
+    startAnimation(color){this.color=this.getRGB(color);this.lightUp()}
+    getRGB(color="green")
     {
         switch (color) {
             case "red":
@@ -14,7 +15,7 @@ class Animator{
                 return "42, 255, 60";
             case "blue":
             
-                return "rgba(42, 255, 60,) "; 
+                return "0, 255, 255"; 
             default:
                 return color;
         }
@@ -24,7 +25,7 @@ class Animator{
        }
 }
 
-Animator.prototype.animate = async function(color = this.color){
+Animator.prototype.lightUp = async function(color = this.color){
    
         var opacity = 0;
         while (opacity < 1) {

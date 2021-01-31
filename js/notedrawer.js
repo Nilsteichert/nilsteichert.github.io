@@ -12,12 +12,13 @@ class NoteDrawer{
         this.timeSignature = "4/4"
     }
 
+    
+
     drawOneNote(note = this.note) {
 
          // -> change to jquery
 
         //Selects div where the image gets rendered:
-        console.log(this.elementID);
         var div = document.getElementById(this.elementID);
         div.innerHTML = ""; 
       
@@ -93,7 +94,6 @@ class NoteDrawer{
         lineRight.setContext(context).draw();
 
         // Draw Voices
-        console.log(voiceBass,voiceTreble)
         
         if (note.clef == "treble"){voiceTreble.draw(context,staveTreble)}
         else {voiceBass.draw(context,staveBass)}
