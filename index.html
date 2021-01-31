@@ -19,6 +19,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="js/vexflow-min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/webmidi@2.5.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
 
 <!-- Load scripts without reference to the document -->
 <script src="js/note.js"></script>
@@ -28,6 +29,8 @@
 <script src="js/noteChecker.js"></script>
 <script src="js/midi-listener.js"></script>
 <script src="js/musicapp.js"></script>
+<script src="js/observable-slim.js"></script>
+
 
 
 
@@ -43,7 +46,7 @@
           <a class="nav-link" href="" data-target="#settings-modal" data-toggle="modal">Settings</a>
         </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/#" role="button" aria-haspopup="true" aria-expanded="false">Select input device</a>
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false">Select input device</a>
             <div class="dropdown-menu dropdown-menu-right" id="sourceSelector">
             </div>
           </li>

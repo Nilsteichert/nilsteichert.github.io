@@ -1,6 +1,6 @@
-<mxfile host="65bd71144e" modified="2021-01-30T22:10:14.457Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" etag="86gwgqz4JFK7GubHc1Hq" version="13.10.0" type="embed" pages="2">
+<mxfile host="65bd71144e" modified="2021-01-31T20:38:04.782Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" etag="gcfr7B4LO9K8C6mw4Vys" version="13.10.0" type="embed" pages="3">
     <diagram id="hTql7uLvHU7AhrSEYBGp" name="MainProgram">
-        <mxGraphModel dx="439" dy="506" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="683" dy="506" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -54,16 +54,16 @@
                 <mxCell id="18" value="+ checkNote(note,string): bool&#10;+ getMidiNote(note):note" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="15" vertex="1">
                     <mxGeometry y="60" width="180" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="19" value="Animator" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                <mxCell id="19" value="Animator" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
                     <mxGeometry x="80" y="430" width="270" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="20" value="+ color:string (RGB Value) " style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="19">
+                <mxCell id="20" value="+ color:string (RGB Value) " style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="19" vertex="1">
                     <mxGeometry y="26" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="21" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="19">
+                <mxCell id="21" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="19" vertex="1">
                     <mxGeometry y="52" width="270" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="22" value="+ startAnimation(string):void (&quot;red&quot;,&quot;green&quot;,&quot;blue&quot;)&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="19">
+                <mxCell id="22" value="+ startAnimation(string):void (&quot;red&quot;,&quot;green&quot;,&quot;blue&quot;)&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="19" vertex="1">
                     <mxGeometry y="60" width="270" height="30" as="geometry"/>
                 </mxCell>
             </root>
@@ -71,7 +71,7 @@
     </diagram>
     <diagram id="wvGUkejmloXZyvdXfBnv" name="Ablaufplan">
         &#xa;
-        <mxGraphModel dx="557" dy="506" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="751" dy="722" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             &#xa;
             <root>
                 &#xa;
@@ -175,5 +175,25 @@
             &#xa;
         </mxGraphModel>
         &#xa;
+    </diagram>
+    <diagram id="r2UJ6vceVUD3vLVVDPaN" name="musicapp">
+        <mxGraphModel dx="683" dy="506" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="V6_PD0OAw4UdkZ-kqRE--0"/>
+                <mxCell id="V6_PD0OAw4UdkZ-kqRE--1" parent="V6_PD0OAw4UdkZ-kqRE--0"/>
+                <mxCell id="V6_PD0OAw4UdkZ-kqRE--7" value="musicapp&#10;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="V6_PD0OAw4UdkZ-kqRE--1">
+                    <mxGeometry x="20" y="30" width="520" height="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="V6_PD0OAw4UdkZ-kqRE--8" value="+ minNote / maxNote: string (&quot;C/3&quot;) =&gt; maximale und minimale generierbare Note&#10;+ drawDiv:string =&gt; div in dem die Noten gemalt werden&#10;+ noteDrawer:noteDrawer =&gt; generiert svg&#10;+ keySignature:KeySignature aktuelle Tonart&#10;+ note:note : aktuelle Note&#10;+ noteChecker:noteChecker&#10;+ animator:animator&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="V6_PD0OAw4UdkZ-kqRE--7">
+                    <mxGeometry y="26" width="520" height="124" as="geometry"/>
+                </mxCell>
+                <mxCell id="V6_PD0OAw4UdkZ-kqRE--9" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="V6_PD0OAw4UdkZ-kqRE--7">
+                    <mxGeometry y="150" width="520" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="V6_PD0OAw4UdkZ-kqRE--10" value="+ draw(): generiert die aktuelle Note&#10;+ nextNote(): gneriert eine neue Note setzt und malt diese&#10;+ selectKeySignature(&quot;string&quot;): wählt die aktuelle Tonart und teilt es allen relevanten Klassen mit" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="V6_PD0OAw4UdkZ-kqRE--7">
+                    <mxGeometry y="158" width="520" height="172" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
     </diagram>
 </mxfile>
