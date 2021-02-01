@@ -10,8 +10,6 @@ class NoteChecker{
         //Check if MidiInput matches shown note
 
         if (inputNote == this.getMidiNote(displayedNote).note) {
-            console.log("nach get midi")
-            console.log(this.getMidiNote(displayedNote).note)
             return true;}
         else {return false;}
     }
@@ -37,7 +35,6 @@ class NoteChecker{
         note.note = note.note.replace("Bb","A#");
 
         var midiNote = new Note().setNoteTo(note.note);
-        console.log(midiNote);
         return midiNote;
     }
 }

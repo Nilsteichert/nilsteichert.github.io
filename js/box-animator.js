@@ -2,6 +2,7 @@ class Animator{
     constructor(elementID){
         this.elementID = elementID;
         this.color = this.getRGB(undefined);
+        this.running=false;
     }
     
     startAnimation(color){this.color=this.getRGB(color);this.lightUp()}
@@ -26,7 +27,8 @@ class Animator{
 }
 
 Animator.prototype.lightUp = async function(color = this.color){
-   
+        if(this.running){return;}
+        this.running=true;
         var opacity = 0;
         while (opacity < 1) {
             opacity+=0.04;  
@@ -38,5 +40,6 @@ Animator.prototype.lightUp = async function(color = this.color){
             document.getElementById(`${this.elementID}`).style.boxShadow=`0 0 50px 20px rgba(${color}, ${opacity})`
             await this.sleep(2);
         }
+        this.running = false;
     }
 

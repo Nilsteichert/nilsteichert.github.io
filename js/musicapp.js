@@ -70,9 +70,31 @@ class Musicapp{
         this.tuner.init();
         const self = this;
         this.tuner.onNoteDetected = function (note) {
-            console.log(self.note.note)
-            console.log(note);
+            console.log("Heared:" +note.name + "/" + note.octave)
+            if(self.noteChecker.checkNote(self.note,(note.name + "/" + note.octave))){
+                self.rightNote()}
+        }
     }
+
+    disableTuner(){
+        this.tuner.audioContext.close();
+    }
+    muteTuner(){
+        try {this.tuner.audioContext.suspend()
+            
+        } catch (error) {console.log("no tuner running")}
+        
+    }
+    unmuteTuner()
+    {
+        try {this.tuner.audioContext.resume()
+            
+        } catch (error) {console.log("no tuner running")}
+    }
+    toggleMic(){
+    if(!this.tuner){this.enableTuner()}
+    else if(this.tuner.audioContext.state=="running"){this.muteTuner(); console.log("y")}
+    else(this.unmuteTuner());
     }
 
 }
