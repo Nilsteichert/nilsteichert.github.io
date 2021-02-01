@@ -1,37 +1,37 @@
-const Application = function() {
+class TunerApplication {
+  constructor() {
 
-  this.tuner = new Tuner(this.a4)
-  this.notes = []  
-}
+    this.tuner = new Tuner(this.a4)
+    this.notes = []
+  }
+  start() {
+    const self = this
+
+    this.tuner.onNoteDetected = function (note) {
 
 
-
-Application.prototype.start = function() {
-  const self = this
-
-  this.tuner.onNoteDetected = function(note) {
-      
-
-      if (checkNote(note.name+"/"+note.octave))
-      {inputIsRight()}
+      if (checkNote(note.name + "/" + note.octave)) { inputIsRight()} 
       else {
-        if (!getAnimationOnCooldown() && self.lastNote !== note.name)
-        {
-        inputIsWrong();
-        animationCooldown();
+        if (!getAnimationOnCooldown() && self.lastNote !== note.name) {
+          inputIsWrong()
+          animationCooldown()
         }
       }
       self.lastNote = note.name
-    
+
+    }
+
+
+    self.tuner.init()
+    self.frequencyData = new Uint8Array(self.tuner.analyser.frequencyBinCount)
   }
-
-
-self.tuner.init()
-self.frequencyData = new Uint8Array(self.tuner.analyser.frequencyBinCount)
 }
 
 
-const app = new Application()
+
+
+
+const app = new TunerApplication()
 
 
 function startTuner(){
