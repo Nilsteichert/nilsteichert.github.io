@@ -2,7 +2,7 @@ class Tuner {
   constructor(a4) {
     this.middleA = a4 || 440
     this.semitone = 69
-    this.bufferSize = 4096
+    this.bufferSize = 4096*4
     this.noteStrings = [
       'C',
       'C#',

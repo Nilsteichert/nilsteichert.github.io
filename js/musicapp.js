@@ -9,6 +9,7 @@ class Musicapp{
         this.noteDrawer = new NoteDrawer(this.drawDiv,this.note,this.keySignature.keySignature)
         this.noteChecker = new NoteChecker(this.keySignature);
         this.animator = new Animator(this.drawDiv);
+        this.tuner;
 
         this.enableMidi(() => {this.listenToMidi()})
     }
@@ -60,4 +61,18 @@ class Musicapp{
         });
     }
     disableMidi() {WebMidi.inputs.forEach(x => {x.removeListener()})}
+
+    // Tuner handling
+
+    enableTuner()
+    {
+        this.tuner = new Tuner();
+        this.tuner.init();
+        const self = this;
+        this.tuner.onNoteDetected = function (note) {
+            console.log(self.note.note)
+            console.log(note);
+    }
+    }
+
 }
