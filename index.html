@@ -56,7 +56,7 @@
         <li class="nav-item">
           <a class="nav-link" href="" data-target="#settings-modal" data-toggle="modal">Settings</a>
         </li>
-        <a class="nav-link" href="javascript:void(0)" onclick="app.toggleMic()">Toggle Microphone</a>
+        <a class="nav-link" href="javascript:void(0)" id="microphoneToggle" onclick="app.toggleMic()">Activate microphone</a>
           </li>
       </ul>
   </div>
@@ -74,7 +74,7 @@
     <div class="mx-auto d-block" id=noteDraw style="background-color: rgb(255,255,255); width:500px;height: 400px; border-radius:4%"> </div>
   </div>
   <div class="row">
-    <div class="btn-group btn-group-toggle mx-auto d-block mt-3" role="group" data-toggle="buttons" aria-label="Basic example">
+    <div class="btn-group btn-group-toggle mx-auto d-block mt-3" role="group" data-toggle="buttons">
       <label class="btn btn-secondary">
         <input type="checkbox" checked="" autocomplete="off"> ♯
       </label>
@@ -82,11 +82,13 @@
         <input type="checkbox" checked="" autocomplete="off"> ♭
       </label>
       <label class="btn btn-secondary">
-        <input type="checkbox" checked="" autocomplete="off"> ♮
+        <input type="checkbox" checked="" autocomplete="off"> Activate microphone
       </label>
-     
     </div>
   </div>    
+  <div class="row">
+    <button type="button" class="btn btn-secondary mx-auto d-block mt-3">Select Keysignature</button>
+  </div>
 </div>
 
 

@@ -62,7 +62,8 @@ class Musicapp{
     }
     disableMidi() {WebMidi.inputs.forEach(x => {x.removeListener()})}
 
-    // Tuner handling
+    // Tuner handling 
+    
 
     enableTuner()
     {
@@ -92,9 +93,13 @@ class Musicapp{
         } catch (error) {console.log("no tuner running")}
     }
     toggleMic(){
-    if(!this.tuner){this.enableTuner()}
-    else if(this.tuner.audioContext.state=="running"){this.muteTuner(); console.log("y")}
-    else(this.unmuteTuner());
+    if(!this.tuner){this.enableTuner()
+    document.getElementById("microphoneToggle").innerHTML="Disable microphone";
+    }
+    else{
+        this.disableTuner;
+        document.getElementById("microphoneToggle").innerHTML="Activate microphone";
+        }   
     }
 
 }
