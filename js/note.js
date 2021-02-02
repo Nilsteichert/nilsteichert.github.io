@@ -28,8 +28,8 @@ class Note {
 
 
 
-        this.accidental = this.generateAccidental(accidentalSetting);
-        if (this.accidental != "") {this.hasAccidental = true}
+        this.generateAccidental(accidentalSetting);
+        
 
         this.note = this.noteWithoutOctave + this.accidental + "/" + this.octave;
 
@@ -60,20 +60,21 @@ class Note {
     generateAccidental(setting) {
         switch (setting) {
             case "#":
-                if (this.rdmBool()) { return "#"; }
+                if (this.rdmBool()) { this.accidental = "#"; break; }
 
             case "b":
-                if (this.rdmBool()) { return "#"; }
+                if (this.rdmBool()) { this.accidental = "#"; break;}
 
             case "random":
                 if (this.rdmBool()) {
-                    if (this.rdmBool()) { return "b"; }
-                    else { return "#"; }
+                    if (this.rdmBool()) { this.accidental = "b"; break;}
+                    else { this.accidental = "#"; }
                 }
 
             default:
-                return "";
+                this.accidental = "";
         }
+        if (this.accidental != "") {this.hasAccidental = true}
 
     }
 

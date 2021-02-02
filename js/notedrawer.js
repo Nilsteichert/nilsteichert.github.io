@@ -1,5 +1,6 @@
 VF = Vex.Flow;
 
+// add inline accidentals
 // Takes id of HTML element and note array (up to 4 notes per clef)
 class NoteDrawer{
     constructor(elementID,note,keySignature = "C",showTimeSignature=false){

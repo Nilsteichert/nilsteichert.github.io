@@ -10,6 +10,9 @@ class Musicapp{
         this.noteChecker = new NoteChecker(this.keySignature);
         this.animator = new Animator(this.drawDiv);
         this.tuner;
+        this.tunerEnabled = false;
+        this.addFlats;
+        this.addSharps;
 
         this.enableMidi(() => {this.listenToMidi()})
     }
@@ -67,8 +70,10 @@ class Musicapp{
 
     enableTuner()
     {
+        console.log(this.tunerEnabled)
         this.tuner = new Tuner();
         this.tuner.init();
+        this.tunerEnabled = true;
         const self = this;
         this.tuner.onNoteDetected = function (note) {
             console.log("Heared:" +note.name + "/" + note.octave)
@@ -78,7 +83,9 @@ class Musicapp{
     }
 
     disableTuner(){
+        console.log(this.tunerEnabled)
         this.tuner.audioContext.close();
+        this.tunerEnabled = false;
     }
     muteTuner(){
         try {this.tuner.audioContext.suspend()
@@ -93,13 +100,42 @@ class Musicapp{
         } catch (error) {console.log("no tuner running")}
     }
     toggleMic(){
-    if(!this.tuner){this.enableTuner()
-    document.getElementById("microphoneToggle").innerHTML="Disable microphone";
-    }
-    else{
-        this.disableTuner;
-        document.getElementById("microphoneToggle").innerHTML="Activate microphone";
+        
+        var x = document.getElementById("micToggle");
+        if(this.tunerEnabled == false){
+            this.enableTuner();
+            
+            x.innerHTML="Disable microphone"
+            x.classList.remove("btn-success")
+            x.classList.add("btn-warning")
+        }
+        else{
+            this.disableTuner();
+            x.innerHTML="Enable microphone";
+            x.classList.add("btn-success");
+            x.classList.remove("btn-warning");
         }   
+    }
+
+    toggleFlats(){
+        if(this.addFlats){this.addFlats=false}
+        else{this.addFlats=true};
+        this.setAccidentals();
+    }
+    toggleSharps(){
+        if(this.addSharps){this.addSharps=false}
+        else{this.addSharps=true};
+        this.setAccidentals();
+    }
+    setAccidentals()
+    {
+        var setTo;
+        if(this.addFlats && this.addSharps){}
+        else if(this.addFlats && !this.addSharps){setTo = "b"}
+        else if(!this.addFlats && this.addSharps){setTo ="#"}
+        else {setTo = ""};  
+        this.note = new Note(this.note.note,this.note.note,setTo);
+        this.draw();      
     }
 
 }
