@@ -9,15 +9,15 @@ class Animator {
     this.color = this.getRGB(color);
     this.lightUp();
   }
-  getRGB(color = 'green') {
+  getRGB(color = "green") {
     switch (color) {
-      case 'red':
-        return '255, 31, 31';
+      case "red":
+        return "255, 31, 31";
 
-      case 'green':
-        return '42, 255, 60';
-      case 'blue':
-        return '0, 255, 255';
+      case "green":
+        return "42, 255, 60";
+      case "blue":
+        return "0, 255, 255";
       default:
         return color;
     }
@@ -27,7 +27,7 @@ class Animator {
   }
 }
 
-Animator.prototype.lightUp = async function(color = this.color) {
+Animator.prototype.lightUp = async function (color = this.color) {
   if (this.running) {
     return;
   }
@@ -36,14 +36,14 @@ Animator.prototype.lightUp = async function(color = this.color) {
   while (opacity < 1) {
     opacity += 0.04;
     document.getElementById(
-        `${this.elementID}`,
+      `${this.elementID}`
     ).style.boxShadow = `0 0 50px 20px rgba(${color}, ${opacity})`;
     await this.sleep(2);
   }
   while (opacity > 0) {
     opacity -= 0.01;
     document.getElementById(
-        `${this.elementID}`,
+      `${this.elementID}`
     ).style.boxShadow = `0 0 50px 20px rgba(${color}, ${opacity})`;
     await this.sleep(2);
   }
