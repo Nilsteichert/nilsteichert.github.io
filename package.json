@@ -1,0 +1,19 @@
+{
+  "name": "notetrainer",
+  "version": "1.0.0",
+  "description": "Trains sightreading",
+  "main": "init.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nilsteichert/Nilsteichert.github.io.git"
+  },
+  "author": "Nils Teichert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nilsteichert/Nilsteichert.github.io/issues"
+  },
+  "homepage": "https://github.com/Nilsteichert/Nilsteichert.github.io#readme"
+}
