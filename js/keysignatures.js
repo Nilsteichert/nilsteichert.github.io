@@ -96,20 +96,20 @@ class KeySignature {
   }
 
   noteInKeySignature(note, keySignature = this.keySignature) {
-    //Ensures signature is a major key signature, if passed a minor one
+    // Ensures signature is a major key signature, if passed a minor one
     keySignature = this.getEquivalentMajorKeySignature(keySignature);
 
-    //Returns note if it already has an accidental
+    // Returns note if it already has an accidental
     if (note.hasAccidental) {
       return note;
     }
 
-    //Get dictornary with all accidentals per key signature
-    var changedNotes = this.getChangedNotes(keySignature);
-    var changedNoteOctave = note.octave;
-    var changedNoteWithoutOctave = note.noteWithoutOctave;
+    // Get dictornary with all accidentals per key signature
+    const changedNotes = this.getChangedNotes(keySignature);
+    let changedNoteOctave = note.octave;
+    let changedNoteWithoutOctave = note.noteWithoutOctave;
 
-    //Check if octave of the note is changed with applied key signature
+    // Check if octave of the note is changed with applied key signature
     if (note.noteWithoutOctave in changedNotes) {
       if (keySignature == "Gb" || keySignature == "Cb") {
         if (note.noteWithoutOctave == "C") {
@@ -126,15 +126,14 @@ class KeySignature {
         note.noteWithoutOctave,
         changedNotes[note.noteWithoutOctave]
       );
-      //Replace note with changed note
-      var changedNote = new Note().setNoteTo(
-        changedNoteWithoutOctave + "/" + changedNoteOctave
+      // Replace note with changed note
+      const changedNote = new Note().setNoteTo(
+        `${changedNoteWithoutOctave}/${changedNoteOctave}`
       );
 
       return changedNote;
-    } else {
-      return note;
     }
+    return note;
   }
 
   getEquivalentMajorKeySignature(keySignature = null) {
@@ -169,13 +168,39 @@ class KeySignature {
       case "Eb":
         return { B: "Bb", E: "Eb", A: "Ab" };
       case "Ab":
-        return { B: "Bb", E: "Eb", A: "Ab", D: "Db" };
+        return {
+          B: "Bb",
+          E: "Eb",
+          A: "Ab",
+          D: "Db",
+        };
       case "Db":
-        return { B: "Bb", E: "Eb", A: "Ab", D: "Db", G: "Gb" };
+        return {
+          B: "Bb",
+          E: "Eb",
+          A: "Ab",
+          D: "Db",
+          G: "Gb",
+        };
       case "Gb":
-        return { B: "Bb", E: "Eb", A: "Ab", D: "Db", G: "Gb", C: "B" };
+        return {
+          B: "Bb",
+          E: "Eb",
+          A: "Ab",
+          D: "Db",
+          G: "Gb",
+          C: "B",
+        };
       case "Cb":
-        return { B: "Bb", E: "Eb", A: "Ab", D: "Db", G: "Gb", C: "B", F: "E" };
+        return {
+          B: "Bb",
+          E: "Eb",
+          A: "Ab",
+          D: "Db",
+          G: "Gb",
+          C: "B",
+          F: "E",
+        };
       case "G":
         return { F: "F#" };
       case "D":
@@ -183,13 +208,39 @@ class KeySignature {
       case "A":
         return { F: "F#", C: "C#", G: "G#" };
       case "E":
-        return { F: "F#", C: "C#", G: "G#", D: "D#" };
+        return {
+          F: "F#",
+          C: "C#",
+          G: "G#",
+          D: "D#",
+        };
       case "B":
-        return { F: "F#", C: "C#", G: "G#", D: "D#", A: "A#" };
+        return {
+          F: "F#",
+          C: "C#",
+          G: "G#",
+          D: "D#",
+          A: "A#",
+        };
       case "F#":
-        return { F: "F#", C: "C#", G: "G#", D: "D#", A: "A#", E: "F" };
+        return {
+          F: "F#",
+          C: "C#",
+          G: "G#",
+          D: "D#",
+          A: "A#",
+          E: "F",
+        };
       case "C#":
-        return { F: "F#", C: "C#", G: "G#", D: "D#", A: "A#", E: "F", B: "C" };
+        return {
+          F: "F#",
+          C: "C#",
+          G: "G#",
+          D: "D#",
+          A: "A#",
+          E: "F",
+          B: "C",
+        };
       default:
         return {};
     }

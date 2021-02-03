@@ -5,7 +5,7 @@ class Musicapp {
     maxNote = "C/5",
     drawDiv = "noteDraw"
   ) {
-    //Variables
+    // Variables
     this.minNote = minNote;
     this.maxNote = maxNote;
     this.drawDiv = drawDiv;
@@ -31,10 +31,12 @@ class Musicapp {
   draw() {
     this.noteDrawer.drawOneNote(this.note);
   }
+
   nextNote() {
     this.note = new Note(this.minNote, this.maxNote);
     this.draw();
   }
+
   selectKeySignature(keySignature) {
     this.keySignature = new KeySignature(keySignature);
     this.noteChecker = new NoteChecker(this.keySignature);
@@ -45,10 +47,12 @@ class Musicapp {
     );
     this.draw();
   }
+
   rightNote() {
     this.animator.startAnimation("green");
     this.nextNote();
   }
+
   wrongNote() {
     this.animator.startAnimation("red");
   }
@@ -56,8 +60,8 @@ class Musicapp {
   // MIDI handling
 
   enableMidi(callback) {
-    WebMidi.enable(function (err) {
-      //Enable WebMidi
+    WebMidi.enable((err) => {
+      // Enable WebMidi
       if (err) {
         // An error occured while starting WebMidi
         console.log("WebMidi could not be enabled.", err);
@@ -72,14 +76,15 @@ class Musicapp {
   listenToMidi() {
     WebMidi.inputs.forEach((input) => {
       input.addListener("noteon", "all", (e) => {
-        var receivedNote = e.note.name + "/" + e.note.octave;
-        console.log("Received 'noteon' message (" + receivedNote + ").");
+        const receivedNote = `${e.note.name}/${e.note.octave}`;
+        console.log(`Received 'noteon' message (${receivedNote}).`);
         if (this.noteChecker.checkNote(this.note, receivedNote)) {
           this.rightNote();
         } else this.wrongNote();
       });
     });
   }
+
   disableMidi() {
     WebMidi.inputs.forEach((x) => {
       x.removeListener();
@@ -95,9 +100,9 @@ class Musicapp {
     this.tunerEnabled = true;
     const self = this;
     this.tuner.onNoteDetected = function (note) {
-      console.log("Heared:" + note.name + "/" + note.octave);
+      console.log(`Heared:${note.name}/${note.octave}`);
       if (
-        self.noteChecker.checkNote(self.note, note.name + "/" + note.octave)
+        self.noteChecker.checkNote(self.note, `${note.name}/${note.octave}`)
       ) {
         self.rightNote();
       }
@@ -109,6 +114,7 @@ class Musicapp {
     this.tuner.audioContext.close();
     this.tunerEnabled = false;
   }
+
   muteTuner() {
     try {
       this.tuner.audioContext.suspend();
@@ -116,6 +122,7 @@ class Musicapp {
       console.log("no tuner running");
     }
   }
+
   unmuteTuner() {
     try {
       this.tuner.audioContext.resume();
@@ -123,8 +130,9 @@ class Musicapp {
       console.log("no tuner running");
     }
   }
+
   toggleMic() {
-    var x = document.getElementById("micToggle");
+    const x = document.getElementById("micToggle");
     if (this.tunerEnabled == false) {
       this.enableTuner();
 
@@ -147,6 +155,7 @@ class Musicapp {
     }
     this.setAccidentals();
   }
+
   toggleSharps() {
     if (this.addSharps) {
       this.addSharps = false;
@@ -155,8 +164,9 @@ class Musicapp {
     }
     this.setAccidentals();
   }
+
   setAccidentals() {
-    var setTo;
+    let setTo;
     if (this.addFlats && this.addSharps) {
     } else if (this.addFlats && !this.addSharps) {
       setTo = "b";

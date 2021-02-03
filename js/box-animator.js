@@ -9,6 +9,7 @@ class Animator {
     this.color = this.getRGB(color);
     this.lightUp();
   }
+
   getRGB(color = "green") {
     switch (color) {
       case "red":
@@ -22,6 +23,7 @@ class Animator {
         return color;
     }
   }
+
   sleep(milliseconds) {
     return new Promise((resolve) => setTimeout(resolve, milliseconds));
   }
