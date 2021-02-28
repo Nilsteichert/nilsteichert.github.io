@@ -1,5 +1,5 @@
-var notes = ["C", "D", "E", "F", "G", "A", "B"];
-var accidentals = ["#", "b", ""];
+const notes = ["C", "D", "E", "F", "G", "A", "B"];
+const accidentals = ["#", "b", ""];
 
 // Takes min and max note, and accidental setting: "b","#","random",""
 
@@ -26,6 +26,7 @@ class Note {
 
     this.generateAccidental(accidentalSetting);
 
+    this.noteForDrawer = this.noteWithoutOctave + this.octave;
     this.note = this.noteWithoutOctave + this.accidental + "/" + this.octave;
   }
 
@@ -137,3 +138,5 @@ class Note {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 }
+
+module.exports = Note;
