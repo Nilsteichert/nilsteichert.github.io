@@ -41,5 +41,3 @@ class NoteChecker {
     return midiNote;
   }
 }
-
-//set keysig

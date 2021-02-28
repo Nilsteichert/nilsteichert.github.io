@@ -34,7 +34,6 @@
     <script src="js/keysignatures.js"></script>
     <script src="js/box-animator.js"></script>
     <script src="js/noteChecker.js"></script>
-    <script src="js/midi-listener.js"></script>
     <script src="js/musicapp.js"></script>
 
     <!--Navbar  -->
@@ -95,253 +94,178 @@
         </div>
       </div>
       <div class="row">
-        <div class="btn-group mx-auto d-block mt-3 dropup" role="group">
-          <button
-            class="btn btn-secondary dropdown-toggle"
-            type="button"
-            id="dropdownMenuButtonMajor"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Major keys
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonMajor">
-            <a
-              class="dropdown-item"
-              id="randommajor"
-              href="javascript:void(0)"
-              onclick="app.selectKeySignature('major')"
-              >Random</a
+        <div class="btn-group mx-auto mt-3">
+          <div class="btn-group mx-auto d-block mt-3 dropup" role="group">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButtonMajor"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
             >
-            <a
-              class="dropdown-item"
-              id="C"
-              href="javascript:void(0)"
-              onclick="app.selectKeySignature('C')"
-              >C-Major</a
+              Select key
+            </button>
+            <div
+              class="dropdown-menu"
+              aria-labelledby="dropdownMenuButtonMajor"
             >
-            <a
-              class="dropdown-item"
-              id="G"
-              href="javascript:void(0)"
-              onclick="app.selectKeySignature('G')"
-              >G-Major</a
-            >
-            <a
-              class="dropdown-item"
-              id="D"
-              href="javascript:void(0)"
-              onclick="app.selectKeySignature('D')"
-              >D-Major</a
-            >
-            <a
-              class="dropdown-item"
-              id="A"
-              href="javascript:void(0)"
-              onclick="app.selectKeySignature('A')"
-              >A-Major</a
-            >
-            <a
-              class="dropdown-item"
-              id="E"
-              href="javascript:void(0)"
-              onclick="app.selectKeySignature('E')"
-              >E-Major</a
-            >
-            <a
-              class="dropdown-item"
-              id="B"
-              href="javascript:void(0)"
-              onclick="app.selectKeySignature('B')"
-              >B-Major</a
-            >
-            <a
-              class="dropdown-item"
-              id="F#"
-              href="javascript:void(0)"
-              onclick="app.selectKeySignature('F#')"
-              >F♯-Major</a
-            >
-            <a
-              class="dropdown-item"
-              id="C#"
-              href="javascript:void(0)"
-              onclick="app.selectKeySignature('C#')"
-              >C♯-Major</a
-            >
-            <a
-              class="dropdown-item"
-              id="F"
-              href="javascript:void(0)"
-              onclick="app.selectKeySignature('F')"
-              >F-Major</a
-            >
-            <a
-              class="dropdown-item"
-              id="Bb"
-              href="javascript:void(0)"
-              onclick="app.selectKeySignature('Bb')"
-              >B♭-Major</a
-            >
-            <a
-              class="dropdown-item"
-              id="Eb"
-              href="javascript:void(0)"
-              onclick="app.selectKeySignature('Eb')"
-              >E♭-Major</a
-            >
-            <a
-              class="dropdown-item"
-              id="Ab"
-              href="javascript:void(0)"
-              onclick="app.selectKeySignature('Ab')"
-              >A♭-Major</a
-            >
-            <a
-              class="dropdown-item"
-              id="Db"
-              href="javascript:void(0)"
-              onclick="app.selectKeySignature('Db')"
-              >D♭-Major</a
-            >
-            <a
-              class="dropdown-item"
-              id="Gb"
-              href="javascript:void(0)"
-              onclick="app.selectKeySignature('Gb')"
-              >G♭-Major</a
-            >
-            <a
-              class="dropdown-item"
-              id="Cb"
-              href="javascript:void(0)"
-              onclick="app.selectKeySignature('Cb')"
-              >C♭-Major</a
-            >
+              <h6 class="dropdown-header">Select key:</h6>
+
+              <a
+                class="dropdown-item"
+                id="C"
+                href="javascript:void(0)"
+                onclick="app.selectKeySignature('C')"
+                >C-major / a-minor</a
+              >
+              <div class="dropdown-divider"></div>
+              <a
+                class="dropdown-item"
+                id="G"
+                href="javascript:void(0)"
+                onclick="app.selectKeySignature('G')"
+                >G-major / e-minor (1 ♯)
+              </a>
+              <a
+                class="dropdown-item"
+                id="D"
+                href="javascript:void(0)"
+                onclick="app.selectKeySignature('D')"
+                >D-Major / b-minor (2 ♯)</a
+              >
+              <a
+                class="dropdown-item"
+                id="A"
+                href="javascript:void(0)"
+                onclick="app.selectKeySignature('A')"
+                >A-Major / f♯-minor (3 ♯)</a
+              >
+              <a
+                class="dropdown-item"
+                id="E"
+                href="javascript:void(0)"
+                onclick="app.selectKeySignature('E')"
+                >E-Major / c♯-minor (4 ♯)</a
+              >
+              <a
+                class="dropdown-item"
+                id="B"
+                href="javascript:void(0)"
+                onclick="app.selectKeySignature('B')"
+                >B-Major / G♯-minor (5 ♯)</a
+              >
+              <a
+                class="dropdown-item"
+                id="F#"
+                href="javascript:void(0)"
+                onclick="app.selectKeySignature('F#')"
+                >F♯-major / d♯-minor (6 ♯)</a
+              >
+              <a
+                class="dropdown-item"
+                id="C#"
+                href="javascript:void(0)"
+                onclick="app.selectKeySignature('C#')"
+                >C♯-Major / a♯-Minor (7 ♯)</a
+              >
+              <div class="dropdown-divider"></div>
+              <a
+                class="dropdown-item"
+                id="F"
+                href="javascript:void(0)"
+                onclick="app.selectKeySignature('F')"
+                >F-Major / d-minor (1 ♭)
+              </a>
+              <a
+                class="dropdown-item"
+                id="Bb"
+                href="javascript:void(0)"
+                onclick="app.selectKeySignature('Bb')"
+                >B♭-Major / g-minor (2 ♭)</a
+              >
+              <a
+                class="dropdown-item"
+                id="Eb"
+                href="javascript:void(0)"
+                onclick="app.selectKeySignature('Eb')"
+                >E♭-Major / c-minor (3 ♭)</a
+              >
+              <a
+                class="dropdown-item"
+                id="Ab"
+                href="javascript:void(0)"
+                onclick="app.selectKeySignature('Ab')"
+                >A♭-Major / f-minor (4 ♭)</a
+              >
+              <a
+                class="dropdown-item"
+                id="Db"
+                href="javascript:void(0)"
+                onclick="app.selectKeySignature('Db')"
+                >D♭-Major / b-minor (5 ♭)</a
+              >
+              <a
+                class="dropdown-item"
+                id="Gb"
+                href="javascript:void(0)"
+                onclick="app.selectKeySignature('Gb')"
+                >G♭-Major / e♭-minor (6 ♭)</a
+              >
+              <a
+                class="dropdown-item"
+                id="Cb"
+                href="javascript:void(0)"
+                onclick="app.selectKeySignature('Cb')"
+                >C♭-Major / a♭-minor (7 ♭)</a
+              >
+            </div>
           </div>
-          <button
-            class="btn btn-secondary dropdown-toggle"
-            type="button"
-            id="dropdownMenuButtonMinor"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Minor keys
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonMinor">
-            <a
-              class="dropdown-item"
-              id="randomminor"
-              onclick="selectKeySignature('minor')"
-              >Random</a
+          <div class="btn-group mx-auto d-block mt-3 dropup" role="group">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButtonRange"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
             >
-            <a
-              class="dropdown-item"
-              id="Am"
-              href="javascript:void(0)"
-              onclick="selectKeySignature('Am')"
-              >A-Minor</a
+              Select range
+            </button>
+            <div
+              class="dropdown-menu"
+              aria-labelledby="dropdownMenuButtonRange"
             >
-            <a
-              class="dropdown-item"
-              id="Dm"
-              href="javascript:void(0)"
-              onclick="selectKeySignature('Dm')"
-              >D-Minor</a
-            >
-            <a
-              class="dropdown-item"
-              id="Gm"
-              href="javascript:void(0)"
-              onclick="selectKeySignature('Gm')"
-              >G-Minor</a
-            >
-            <a
-              class="dropdown-item"
-              id="Cm"
-              href="javascript:void(0)"
-              onclick="selectKeySignature('Cm')"
-              >C-Minor</a
-            >
-            <a
-              class="dropdown-item"
-              id="Fm"
-              href="javascript:void(0)"
-              onclick="selectKeySignature('Fm')"
-              >F-Minor</a
-            >
-            <a
-              class="dropdown-item"
-              id="Bbm"
-              href="javascript:void(0)"
-              onclick="selectKeySignature('Bbm')"
-              >B♭-Minor</a
-            >
-            <a
-              class="dropdown-item"
-              id="Ebm"
-              href="javascript:void(0)"
-              onclick="selectKeySignature('Ebm')"
-              >E♭-Minor</a
-            >
-            <a
-              class="dropdown-item"
-              id="Abm"
-              href="javascript:void(0)"
-              onclick="selectKeySignature('Abm')"
-              >A♭-Minor</a
-            >
-            <a
-              class="dropdown-item"
-              id="Em"
-              href="javascript:void(0)"
-              onclick="selectKeySignature('Em')"
-              >E-Minor</a
-            >
-            <a
-              class="dropdown-item"
-              id="Bm"
-              href="javascript:void(0)"
-              onclick="selectKeySignature('Bm')"
-              >B-Minor</a
-            >
-            <a
-              class="dropdown-item"
-              id="F#m"
-              href="javascript:void(0)"
-              onclick="selectKeySignature('F#m')"
-              >F♯-Minor</a
-            >
-            <a
-              class="dropdown-item"
-              id="C#m"
-              href="javascript:void(0)"
-              onclick="selectKeySignature('C#m')"
-              >C♯-Minor</a
-            >
-            <a
-              class="dropdown-item"
-              id="G#m"
-              href="javascript:void(0)"
-              onclick="selectKeySignature('G#m')"
-              >G♯-Minor</a
-            >
-            <a
-              class="dropdown-item"
-              id="D#m"
-              href="javascript:void(0)"
-              onclick="selectKeySignature('D#m')"
-              >D♯-Minor</a
-            >
-            <a
-              class="dropdown-item"
-              id="A#m"
-              href="javascript:void(0)"
-              onclick="selectKeySignature('A#m')"
-              >A♯-Minor</a
-            >
+              <h6 class="dropdown-header">Select range:</h6>
+              <a
+                class="dropdown-item"
+                id="rangeTreBass"
+                href="javascript:void(0)"
+                onclick="app.setRange('C/2','C/6')"
+                >Treble and bass (C2 - C6)</a
+              >
+              <a
+                class="dropdown-item"
+                id="rangeTre"
+                href="javascript:void(0)"
+                onclick="app.setRange('C/4','C/6')"
+                >Treble (C4 - C6)</a
+              >
+              <a
+                class="dropdown-item"
+                id="rangeTre"
+                href="javascript:void(0)"
+                onclick="app.setRange('C/2','C/4')"
+                >Bass (C2 - C4)</a
+              >
+              <a
+                data-toggle="modal"
+                href="#rangeModal"
+                class="dropdown-item"
+                onclick="app.validateInput()"
+                >Custom range</a
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -349,6 +273,113 @@
 
     <!-- Modals -->
 
+    <!-- Range select modal -->
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="rangeModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="rangeSelectionModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="rangeSelectionModalLabel">
+              Select range
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">How to use</h4>
+                  <p class="card-text">
+                    Here you can select your own range.
+                    Middle C is C4. 
+                    Minimum note is C1, maximum note is B8.
+                    Either enter it manually or use the buttons to adjust the range to your own desire.
+
+                </p>
+                  </p>
+                  <a href="#" class="card-link">Card link</a>
+                  <a href="#" class="card-link">Another link</a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+
+                  <div class="input-group has-validation mb-3 mt-5">
+                    <div class="input-group-prepend">
+                      <button class="btn btn-outline-danger" type="button">
+                        -
+                      </button>
+                      <button class="btn btn-outline-success" type="button">
+                        +
+                      </button>
+                    </div>
+                    <input
+                      onkeyup="this.value = this.value.toUpperCase();"
+                      id="inputMin"
+                      maxlength="2"
+                      type="text"
+                      class="form-control"
+                      placeholder="lowest note"
+                      aria-label=""
+                      aria-describedby="basic-addon1"
+                    />
+                    <div class="invalid-feedback">
+                      Note must be between C1 and B8
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="input-group has-validation mb-3 mt-5">
+                    <div class="input-group-prepend">
+                      <button class="btn btn-outline-danger" type="button">
+                        -
+                      </button>
+                      <button class="btn btn-outline-success" type="button">
+                        +
+                      </button>
+                    </div>
+                    <input
+                      onkeyup="this.value = this.value.toUpperCase();"
+                      id="inputMax"
+                      maxlength="2"
+                      type="text"
+                      class="form-control"
+                      placeholder="highest note"
+                      aria-label=""
+                      aria-describedby="basic-addon1"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Login -->
     <!-- Modal HTML -->
     <!-- Login / Register Modal-->
