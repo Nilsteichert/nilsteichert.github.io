@@ -35,6 +35,7 @@
     <script src="js/box-animator.js"></script>
     <script src="js/noteChecker.js"></script>
     <script src="js/musicapp.js"></script>
+    <script src="js/rangeModalHandler.js"></script>
 
     <!--Navbar  -->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -262,7 +263,7 @@
                 data-toggle="modal"
                 href="#rangeModal"
                 class="dropdown-item"
-                onclick="app.validateInput()"
+                onclick="app.rangeModalHandler.validateInput()"
                 >Custom range</a
               >
             </div>
@@ -320,10 +321,10 @@
 
                   <div class="input-group has-validation mb-3 mt-5">
                     <div class="input-group-prepend">
-                      <button class="btn btn-outline-danger" type="button">
+                      <button class="btn btn-outline-danger" type="button" onclick="app.rangeModalHandler.decreaseMin()">
                         -
                       </button>
-                      <button class="btn btn-outline-success" type="button">
+                      <button class="btn btn-outline-success" type="button" onclick="app.rangeModalHandler.increaseMin()">
                         +
                       </button>
                     </div>
@@ -345,10 +346,10 @@
                 <div class="col-6">
                   <div class="input-group has-validation mb-3 mt-5">
                     <div class="input-group-prepend">
-                      <button class="btn btn-outline-danger" type="button">
+                      <button class="btn btn-outline-danger" type="button" onclick="app.rangeModalHandler.decreaseMax()">
                         -
                       </button>
-                      <button class="btn btn-outline-success" type="button">
+                      <button class="btn btn-outline-success" type="button" onclick="app.rangeModalHandler.increaseMax()">
                         +
                       </button>
                     </div>

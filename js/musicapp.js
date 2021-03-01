@@ -18,6 +18,7 @@ class Musicapp {
     );
     this.noteChecker = new NoteChecker(this.keySignature);
     this.animator = new Animator(this.drawDiv);
+    this.rangeModalHandler = new RangeModalHandler();
     this.tuner;
     this.tunerEnabled = false;
     this.addFlats;
@@ -182,46 +183,5 @@ class Musicapp {
     }
     this.note = new Note(this.note.note, this.note.note, setTo);
     this.draw();
-  }
-
-  //Range Modal:
-  noteInRange(input) {
-    const validNotes = ["C", "D", "E", "F", "G", "A", "B"];
-    if (validNotes.includes(input.charAt(0))) {
-      let octave = parseInt(input.charAt(1));
-      if (octave > 0 && octave < 9) {
-        return true;
-      }
-    }
-    return false;
-  }
-  validateInput() {
-    const inputMin = document.getElementById("inputMin");
-    const inputMax = document.getElementById("inputMax");
-
-    const updateValueMin = (e) => {
-      var input = e.target.value;
-
-      if (this.noteInRange(input)) {
-        inputMin.classList.remove("is-invalid");
-        inputMin.classList.add("is-valid");
-      } else {
-        inputMin.classList.remove("is-valid");
-        inputMin.classList.add("is-invalid");
-      }
-    };
-    const updateValueMax = (e) => {
-      var input = e.target.value;
-
-      if (this.noteInRange(input)) {
-        inputMax.classList.remove("is-invalid");
-        inputMax.classList.add("is-valid");
-      } else {
-        inputMax.classList.remove("is-valid");
-        inputMax.classList.add("is-invalid");
-      }
-    };
-    inputMin.addEventListener("input", updateValueMin);
-    inputMax.addEventListener("input", updateValueMax);
   }
 }
