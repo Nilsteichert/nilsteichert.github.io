@@ -4,6 +4,18 @@ class RangeModalHandler {
     this.allNotes = {};
     this.inputMin = document.getElementById("inputMin");
     this.inputMax = document.getElementById("inputMax");
+    this.formIsValid = false;
+  }
+
+  checkValidility() {
+    if (
+      this.inputMin.classList.contains("is-valid") &&
+      this.inputMax.classList.contains("is-valid")
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   noteInRange(input) {
@@ -120,8 +132,8 @@ class RangeModalHandler {
   }
   increaseMax() {
     this.inputMax.value = this.increaseNote(this.inputMax.value);
-    this.inputMin.classList.remove("is-invalid");
-    this.inputMin.classList.add("is-valid");
+    this.inputMax.classList.remove("is-invalid");
+    this.inputMax.classList.add("is-valid");
   }
 
   decreaseMin() {
@@ -131,11 +143,35 @@ class RangeModalHandler {
   }
   decreaseMax() {
     this.inputMax.value = this.decreaseNote(this.inputMax.value);
-    this.inputMin.classList.remove("is-invalid");
-    this.inputMin.classList.add("is-valid");
+    this.inputMax.classList.remove("is-invalid");
+    this.inputMax.classList.add("is-valid");
   }
 
-  compareMinMax(minNote, maxNote) {
-    //TODO
+  isMinGreaterMax(
+    minNote = this.inputMin.value,
+    maxNote = this.inputMax.value
+  ) {
+    //Returns true if minNote > maxNote
+
+    var noteOctaveMin = parseInt(minNote.charAt(1));
+    var noteOctaveMax = parseInt(maxNote.charAt(1));
+    if (noteOctaveMin > noteOctaveMax) {
+      return true;
+    } else if (noteOctaveMin < noteOctaveMax) {
+      return false;
+    } else if (noteOctaveMin == noteOctaveMax) {
+      var noteValueMin = this.convertNoteToNumber(minNote.charAt(0));
+      var noteValueMax = this.convertNoteToNumber(maxNote.charAt(0));
+      console.log(noteValueMin);
+      console.log(noteValueMax);
+      if (noteValueMin > noteValueMax) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+  convertNoteToNumber(note) {
+    return parseInt(this.validNotes.indexOf(note));
   }
 }

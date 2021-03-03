@@ -184,4 +184,6 @@ class Musicapp {
     this.note = new Note(this.note.note, this.note.note, setTo);
     this.draw();
   }
+  //RangeModalSave
+  saveRangeModal() {}
 }
