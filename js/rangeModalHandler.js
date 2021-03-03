@@ -4,18 +4,7 @@ class RangeModalHandler {
     this.allNotes = {};
     this.inputMin = document.getElementById("inputMin");
     this.inputMax = document.getElementById("inputMax");
-    this.formIsValid = false;
-  }
-
-  checkValidility() {
-    if (
-      this.inputMin.classList.contains("is-valid") &&
-      this.inputMax.classList.contains("is-valid")
-    ) {
-      return true;
-    } else {
-      return false;
-    }
+    this.safeButton = document.getElementById("saveRangeButton");
   }
 
   noteInRange(input) {
@@ -38,6 +27,7 @@ class RangeModalHandler {
         this.inputMin.classList.remove("is-valid");
         this.inputMin.classList.add("is-invalid");
       }
+      this.isValid();
     };
     const updateValueMax = (e) => {
       var input = e.target.value;
@@ -49,6 +39,7 @@ class RangeModalHandler {
         this.inputMax.classList.remove("is-valid");
         this.inputMax.classList.add("is-invalid");
       }
+      this.isValid();
     };
     this.inputMin.addEventListener("input", updateValueMin);
     this.inputMax.addEventListener("input", updateValueMax);
@@ -129,22 +120,26 @@ class RangeModalHandler {
     this.inputMin.value = this.increaseNote(this.inputMin.value);
     this.inputMin.classList.remove("is-invalid");
     this.inputMin.classList.add("is-valid");
+    this.isValid();
   }
   increaseMax() {
     this.inputMax.value = this.increaseNote(this.inputMax.value);
     this.inputMax.classList.remove("is-invalid");
     this.inputMax.classList.add("is-valid");
+    this.isValid();
   }
 
   decreaseMin() {
     this.inputMin.value = this.decreaseNote(this.inputMin.value);
     this.inputMin.classList.remove("is-invalid");
     this.inputMin.classList.add("is-valid");
+    this.isValid();
   }
   decreaseMax() {
     this.inputMax.value = this.decreaseNote(this.inputMax.value);
     this.inputMax.classList.remove("is-invalid");
     this.inputMax.classList.add("is-valid");
+    this.isValid();
   }
 
   isMinGreaterMax(
@@ -152,6 +147,9 @@ class RangeModalHandler {
     maxNote = this.inputMax.value
   ) {
     //Returns true if minNote > maxNote
+    if (minNote == maxNote) {
+      return false;
+    }
 
     var noteOctaveMin = parseInt(minNote.charAt(1));
     var noteOctaveMax = parseInt(maxNote.charAt(1));
@@ -173,5 +171,35 @@ class RangeModalHandler {
   }
   convertNoteToNumber(note) {
     return parseInt(this.validNotes.indexOf(note));
+  }
+
+  getRange() {
+    if (this.isMinGreaterMax()) {
+      let minOld = this.inputMin.value;
+      let maxOld = this.inputMax.value;
+      this.inputMin.value = maxOld;
+      this.inputMax.value = minOld;
+    }
+    return {
+      min: this.formatNote(this.inputMin.value),
+      max: this.formatNote(this.inputMax.value),
+    };
+  }
+
+  formatNote(note) {
+    return note.charAt(0) + "/" + note.charAt(1);
+  }
+
+  isValid() {
+    if (
+      this.noteInRange(this.inputMin.value) &&
+      this.noteInRange(this.inputMax.value)
+    ) {
+      this.safeButton.disabled = false;
+      return true;
+    } else {
+      this.safeButton.disabled = true;
+      return false;
+    }
   }
 }

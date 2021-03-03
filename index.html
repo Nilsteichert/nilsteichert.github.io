@@ -285,7 +285,7 @@
       aria-hidden="true"
     >
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <form id="rangeForm" class="modal-content needs-validation" onsubmit="return false" novalidate>
           <div class="modal-header">
             <h5 class="modal-title" id="rangeSelectionModalLabel">
               Select range
@@ -312,14 +312,12 @@
 
                 </p>
                   </p>
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
                 </div>
               </div>
-              <div class="row">
+              <div class="row g-3">
                 <div class="col-6">
 
-                  <div class="input-group has-validation mb-3 mt-5">
+                  <div class="input-group needs-validation mb-3 mt-5">
                     <div class="input-group-prepend">
                       <button class="btn btn-outline-danger" type="button" onclick="app.rangeModalHandler.decreaseMin()">
                         -
@@ -365,6 +363,9 @@
                       aria-describedby="basic-addon1"
                       required
                     />
+                    <div class="invalid-feedback">
+                      Note must be between C1 and B8
+                    </div>
                   </div>
                 </div>
               </div>
@@ -378,9 +379,9 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button id="saveRangeButton" type="button" onclick="app.saveRangeModal()" class="btn btn-primary" disabled>Save changes</button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
     <!-- Login -->

@@ -185,5 +185,12 @@ class Musicapp {
     this.draw();
   }
   //RangeModalSave
-  saveRangeModal() {}
+  saveRangeModal() {
+    if (this.rangeModalHandler.isValid()) {
+      let range = this.rangeModalHandler.getRange();
+      this.setRange(range.min, range.max);
+      this.nextNote();
+      $("#rangeModal").modal("hide");
+    }
+  }
 }
