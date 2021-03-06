@@ -1,42 +1,38 @@
-const Settings = function () {
-  this.withAccidental = false;
-  this.keysignature = "C";
-  this.lowestNote = "C/2";
-  this.highestNote = "C/6";
-  this.loadCookies();
-};
+class Settings {
+  constructor() {
+    this.keySignature = "C";
+    this.lowestNote = "C/2";
+    this.highestNote = "C/6";
+    this.loadCookies();
+  }
+  loadCookies() {
+    var keysignature = Cookies.get("keySignature");
+    if (keysignature != null) {
+      this.keySignature = keysignature;
+    }
+    var lowestNote = Cookies.get("lowestNote");
+    if (lowestNote != null) {
+      this.lowestNote = lowestNote;
+    }
+    var highestNote = Cookies.get("highestNote");
+    if (highestNote != null) {
+      this.highestNote = highestNote;
+    }
+  }
 
-Settings.prototype.loadCookies = function () {
-  this.withAccidental = Cookies.get("withAccidental");
-  this.keysignature = Cookies.get("keysignature");
-  this.lowestNote = Cookies.get("lowestNote");
-  this.highestNote = Cookies.get("highestNote");
-};
+  setKeySignature(keysignature) {
+    Cookies.set("keySignature", keysignature, { expires: 365 });
+  }
+  setLowestNote(lowestNote) {
+    Cookies.set("lowestNote", lowestNote, { expires: 365 });
+  }
+  setHighestNote(highestNote) {
+    Cookies.set("highestNote", highestNote, { expires: 365 });
+  }
 
-Settings.prototype.setAllCookies = function (
-  withAccidental,
-  keysignature,
-  lowestNote,
-  highestNote
-) {
-  Cookies.set("withAccidental", withAccidental, { expires: 365 });
-  Cookies.set("keysignature", keysignature, { expires: 365 });
-  Cookies.set("lowestNote", lowestNote, { expires: 365 });
-  Cookies.set("highestNote", highestNote, { expires: 365 });
-};
-
-Settings.prototype.setWithAccidental = function (withAccidental) {
-  Cookies.set("withAccidental", withAccidental, { expires: 365 });
-};
-
-Settings.prototype.setKeysignature = function (keysignature) {
-  Cookies.set("keysignature", keysignature, { expires: 365 });
-};
-
-Settings.prototype.setlowestNote = function (lowestNote) {
-  Cookies.set("lowestNote", lowestNote, { expires: 365 });
-};
-
-Settings.prototype.sethighestNote = function (highestNote) {
-  Cookies.set("highestNote", highestNote, { expires: 365 });
-};
+  reset() {
+    Cookies.remove("keySignature");
+    Cookies.remove("lowestNote");
+    Cookies.remove("highestNote");
+  }
+}

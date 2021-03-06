@@ -3,9 +3,15 @@ class Musicapp {
     keySignature = "C",
     minNote = "C/3",
     maxNote = "C/5",
-    drawDiv = "noteDraw"
+    drawDiv = "noteDraw",
+    settings
   ) {
     // Variables
+
+    //To get time difference between two notes
+    this.noteGeneratedAt;
+    this.isFirstNote = true;
+
     this.minNote = minNote;
     this.maxNote = maxNote;
     this.drawDiv = drawDiv;
@@ -31,7 +37,9 @@ class Musicapp {
 
   setRange(minNote, maxNote) {
     this.minNote = minNote;
+    settings.setLowestNote(minNote);
     this.maxNote = maxNote;
+    settings.setHighestNote(maxNote);
     this.nextNote();
   }
   draw() {
@@ -41,6 +49,7 @@ class Musicapp {
   nextNote() {
     this.note = new Note(this.minNote, this.maxNote);
     this.draw();
+    console.log(settings);
   }
 
   selectKeySignature(keySignature) {
@@ -51,6 +60,7 @@ class Musicapp {
       this.note,
       this.keySignature.keySignature
     );
+    settings.setKeySignature(keySignature);
     this.draw();
   }
 

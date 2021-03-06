@@ -30,6 +30,10 @@ class Note {
     this.note = this.noteWithoutOctave + this.accidental + "/" + this.octave;
   }
 
+  toJSON(key = "C") {
+    console.log(JSON.stringify({ note: this.note, key: key }));
+  }
+
   generateNoteWithoutOctave() {
     //If all possible notes are in the same octave
     if (this.minOctave == this.maxOctave) {
