@@ -3,15 +3,15 @@ class Musicapp {
     keySignature = "C",
     minNote = "C/3",
     maxNote = "C/5",
-    drawDiv = "noteDraw",
-    settings
+    drawDiv = "noteDraw"
+    //settings
   ) {
     // Variables
 
     //To get time difference between two notes
-    this.noteGeneratedAt;
-    this.isFirstNote = true;
+    this.noteGeneratedAt = Date.now();
 
+    //Settings
     this.minNote = minNote;
     this.maxNote = maxNote;
     this.drawDiv = drawDiv;
@@ -49,7 +49,7 @@ class Musicapp {
   nextNote() {
     this.note = new Note(this.minNote, this.maxNote);
     this.draw();
-    console.log(settings);
+    this.noteGeneratedAt = Date.now();
   }
 
   selectKeySignature(keySignature) {
@@ -66,6 +66,7 @@ class Musicapp {
 
   rightNote() {
     this.animator.startAnimation("green");
+    stats.addNote(this.note.note, this.keySignature, this.noteGeneratedAt);
     this.nextNote();
   }
 

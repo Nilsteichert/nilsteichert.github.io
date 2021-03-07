@@ -20,13 +20,16 @@ class Settings {
     }
   }
 
-  setKeySignature(keysignature) {
-    Cookies.set("keySignature", keysignature, { expires: 365 });
+  setKeySignature(keySignature) {
+    this.keySignature = keySignature;
+    Cookies.set("keySignature", keySignature, { expires: 365 });
   }
   setLowestNote(lowestNote) {
+    this.lowestNote = lowestNote;
     Cookies.set("lowestNote", lowestNote, { expires: 365 });
   }
   setHighestNote(highestNote) {
+    this.highestNote = highestNote;
     Cookies.set("highestNote", highestNote, { expires: 365 });
   }
 
