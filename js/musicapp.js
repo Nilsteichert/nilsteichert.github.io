@@ -86,7 +86,7 @@ class Musicapp {
       if (err) {
         // An error occured while starting WebMidi
         console.log("WebMidi could not be enabled.", err);
-        window.alert("WebMidi is not supported by your Browser.");
+        //(window.alert("WebMidi is not supported by your Browser.");
       } else {
         // WebMidi enabled successfully
         callback();
