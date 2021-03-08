@@ -66,7 +66,11 @@ class Musicapp {
 
   rightNote() {
     this.animator.startAnimation("green");
-    stats.addNote(this.note.note, this.keySignature, this.noteGeneratedAt);
+    stats.addNote(
+      this.note.note,
+      this.keySignature.keySignature,
+      Date.now() - this.noteGeneratedAt
+    );
     this.nextNote();
   }
 
