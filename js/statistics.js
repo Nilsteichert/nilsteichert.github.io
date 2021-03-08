@@ -1,42 +1,50 @@
 class Statistics {
   constructor() {
     this.firstNote = true;
-    this.statistics = [] = this.statJsonToObj();
+    this.statistics = [];
+    this.loadStats();
   }
 
-  getTimeDifference(firstDate, secondDate = null) {
-    var firstDate = Date.now();
-
-    setInterval(function () {
-      document.getElementById("difference").innerHTML = Date.now() - firstDate;
-
-      // the difference will be in ms
-    }, 1000);
+  //Takes note and key string and answerTime
+  addNote(note, key, answerTime) {
+    if (note != null && key != null && answerTime != null) {
+      this.statistics.push({
+        note: note,
+        key: key,
+        answerTime: answerTime,
+        date: Date.now(),
+      });
+      this.saveStats();
+    }
+  }
+  loadStats() {
+    localforage.getItem("noteStatistics", (err, value) => {
+      // Run this code once the value has been
+      // loaded from the offline store.
+      console.log(value);
+      if (value) {
+        ("val found");
+      }
+    });
   }
 
-  addNote(note, key, answerTime) {}
-
-  statJsonToObj() {
-    var statistics = Cookies.get("statistics");
-    if (statistics != null) {
-      return JSON.parse(statistics);
-    } else return [""];
+  clearStats() {
+    localforage.removeItem("noteStatistics", (err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("cleared");
+      }
+    });
   }
 
-  statObjToJson() {
-    let stats = [
-      {
-        note: "C",
-        key: "C",
-        answerTime: 1,
-      },
-      {
-        note: "D",
-        key: "D",
-        answerTime: 2,
-      },
-    ];
-    let JSONstats = JSON.stringify(stats);
-    return JSONstats;
+  saveStats() {
+    localforage.setItem("noteStatistics", this.statistics, (err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("saved");
+      }
+    });
   }
 }
