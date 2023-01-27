@@ -55,7 +55,6 @@ class Tuner {
     }
   }
 
- 
   startRecord() {
     const self = this;
     navigator.mediaDevices
@@ -64,28 +63,49 @@ class Tuner {
         self.audioContext
           .createMediaStreamSource(stream)
           .connect(self.analyser);
-        self.analyser.connect(self.workletNode);
-        self.workletNode.connect(self.audioContext.destination);
-        self.workletNode.port.onmessage = function (event) {
-          // Handle the message sent from the worklet
-          if (event.data && self.onNoteDetected) {
-            const note = self.getNote(event.data.frequency);
+        self.analyser.connect(self.scriptProcessor);
+        self.scriptProcessor.connect(self.audioContext.destination);
+        self.scriptProcessor.addEventListener("audioprocess", function (event) {
+          const frequency = self.pitchDetector.do(
+            event.inputBuffer.getChannelData(0)
+          );
+          if (frequency && self.onNoteDetected) {
+            const note = self.getNote(frequency);
             self.onNoteDetected({
               name: self.noteStrings[note % 12],
               value: note,
-              cents: self.getCents(event.data.frequency, note),
+              cents: self.getCents(frequency, note),
               octave: parseInt(note / 12) - 1,
-              frequency: event.data.frequency,
+              frequency: frequency,
             });
           }
-        };
+        });
       })
       .catch(function (error) {
         alert(error.name + ": " + error.message);
       });
   }
-  
+  init() {
+    this.audioContext = new window.AudioContext();
+    this.analyser = this.audioContext.createAnalyser();
+    this.scriptProcessor = this.audioContext.createScriptProcessor(
+      this.bufferSize,
+      1,
+      1
+    );
 
+    const self = this;
+
+    Aubio().then(function (aubio) {
+      self.pitchDetector = new aubio.Pitch(
+        "default",
+        self.bufferSize,
+        1,
+        self.audioContext.sampleRate
+      );
+      self.startRecord();
+    });
+  }
   /**
    * get musical note from frequency
    *
